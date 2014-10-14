@@ -50,23 +50,30 @@ int main(int argc, char *argv[]) {
 	 */
 
 	for(num_fils=0;num_fils<nb_fils;num_fils++) {
-		pidfork=fork();
-		if (pidfork!=0) {
-			/**
-			 * Code d'execution du programme principal, poursuite de la création de fils
-			 */
-		
-			pidfils[num_fils]=pidfork;
-			fprintf(stdout, "Fils %d cree avec le pid %d\n", num_fils, pidfils[num_fils]);
-		}
-		else {
-			/**
-			 * Code d'execution du fils num_fils
-			 */
+		switch(pidfork=fork()) {
+			case -1 :
+				fprintf(stderr,"Erreur lors de la creation du fork\n");
+				exit(-1);
+			break;
+			
+			case 0 :
+				/**
+				 * Code d'execution du fils num_fils
+				 */
 
-			fprintf(stdout, "Je suis le fils %d avec le pid %d\n", num_fils, getpid());
+				fprintf(stdout, "Je suis le fils %d avec le pid %d\n", num_fils, getpid());
 
-			return 0;
+				return 0;
+			break;
+			
+			default :
+				/**
+				 * Code d'execution du programme principal, poursuite de la création de fils
+				 */
+
+				pidfils[num_fils]=pidfork;
+				fprintf(stdout, "Fils %d cree avec le pid %d\n", num_fils, pidfils[num_fils]);
+			break;
 		}
 	}
 	
