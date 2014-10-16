@@ -13,6 +13,11 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <signal.h>
+
+void gestionnaire_sigusr1(int numero) {
+
+}
 
 int main(int argc, char *argv[]) {
 
@@ -34,18 +39,20 @@ int main(int argc, char *argv[]) {
 	/**
 	 * tableau des PID de chaque fils, pid renvoyé par fork et le status renvoyé par les wait finaux
 	 */
-	 
-	int pidfils[4], pidfork, status;
-	
-	
+
+	int status;
+	pid_t pidfork, pidfils[4];
+
 	/**
 	 * Autres variables
 	 */
 	int indice;
-	
+
 	int num_fils, nb_fils; //le numéro du fils et le nombre de fils à créé.
 	nb_fils = 4; // Quatres joueurs
-	 
+
+	struct sigaction action; //gestion signal
+
 	/**
 	 * Création des pipes
 	 */
@@ -73,6 +80,15 @@ int main(int argc, char *argv[]) {
 				/**
 				 * Code d'execution du fils num_fils
 				 */
+				
+				action.sa_handler=gestionnaire_sigusr1;
+				sigemptyset(&action.sa_mask);
+				action.sa_flags=SA_RESTART;
+
+				if (sigaction(SIGUSR1, &action, NULL) != 0) {
+					fprintf(stderr, "Erreur dans sigaction \n");
+					exit(EXIT_FAILURE);
+				}
 
 				/**
 				 * Fermetures des pipes inutilises pour le fils en cours
@@ -104,7 +120,14 @@ int main(int argc, char *argv[]) {
 				 */
 
 				fflush(stdout);
-				fprintf(stdout, "Je suis le fils %d avec le pid %d \n", num_fils, getpid());
+				fprintf(stdout, "Je suis le fils %d avec le pid %d", num_fils, getpid());
+				system("date +\"%H:%M:%S\"");
+				fprintf(stdout, "\n");
+				usleep(10000000); // 10 sec
+				fflush(stdout);
+				fprintf(stdout, "Fin fils %d avec le pid %d", num_fils, getpid());
+				system("date +\"%H:%M:%S\"");
+				fprintf(stdout, "\n");
 
 				/**
 				 * Fermetures des pipes restant
@@ -140,7 +163,17 @@ int main(int argc, char *argv[]) {
 	/**
 	 * Suite du programme principal
 	 */
-	
+/*
+				action.sa_handler=gestionnaire_sigusr1;
+				sigemptyset(&action.sa_mask);
+				action.sa_flags=SA_RESTART;
+
+				if (sigaction(SIGUSR1, &action, NULL) != 0) {
+					fprintf(stderr, "Erreur dans sigaction \n");
+					exit(EXIT_FAILURE);
+				}
+
+*/
 	/**
 	 * Fermetures des pipes inutilises
 	 */
@@ -160,7 +193,8 @@ int main(int argc, char *argv[]) {
 	 * Corps du programme
 	*/
 	
-	
+	usleep(2000000);
+	kill(pidfils[0],SIGUSR1);
 	
 	/**
 	 * Fermetures des pipes restants
