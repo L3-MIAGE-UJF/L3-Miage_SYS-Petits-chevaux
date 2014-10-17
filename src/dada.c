@@ -15,11 +15,15 @@
 #include <sys/wait.h>
 #include <signal.h>
 
+#include "des.h"
+
 void gestionnaire_sigusr1(int numero) {
 
 }
 
 int main(int argc, char *argv[]) {
+
+	init_alea();
 
 	/**
 	 * Tableau de pipes
@@ -192,7 +196,9 @@ int main(int argc, char *argv[]) {
 	/**
 	 * Corps du programme
 	*/
-	
+	for(indice=0;indice<45;indice++) {
+		printf("alea : %d \n", lancer_des());
+	}
 	usleep(2000000);
 	kill(pidfils[0],SIGUSR1);
 	

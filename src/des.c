@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <time.h>
+
 /**
  * \brief       Calcule la distance entre deux points
  * \details    La distance entre les \a point1 et \a point2 est calculée par l'intermédiaire
@@ -6,9 +9,15 @@
  * \param    point2         Point 2 pour le calcul de distance.
  * \return    Un \e float représentant la distance calculée.
  */
- 
- 
- 
+
+void init_alea() {
+	srand(time(NULL)); // initialisation de rand
+}
+
+int lancer_des() {
+	return rand()%6+1;
+}
+
  /**
  * \brief      Couleur possible pour un Point.
  * \details   La table de correspondance de couleurs est disponible en modification par les accesseurs.
