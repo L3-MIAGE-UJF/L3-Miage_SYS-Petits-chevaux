@@ -12,21 +12,23 @@
  * \return    le pointeur \a sur le tableau cree
  */
 
-// Pas forcement indispensable ?
-int * creation_plateau() {
-	int * plateau;
-	int indice;
 
-	plateau = (int *) malloc(sizeof(int)*80);
-	for (indice=0;indice<80;indice++) {
-		plateau[indice]=0;
-	}
-	return plateau;
-}
+/**
+ * Structure transitant du programme principal vers les joueurs. Elle informe les joueurs du prochain qui doit jouer.
+ */
+ 
 
-void suppr_plateau(int * plateau) {
-	free(plateau);
-}
+
+/**
+ * Structure transitant des joueurs vers le programme principal. Elle informe le programme principal du résultat du de, de la nouvelle position du joueur.
+ */
+
+
+
+/**
+ * Structure transitant des joueurs vers les joueurs. Elle informe les autres joueurs de la nouvelle position du joueur
+ */
+
 
 //typedef enum
 //{

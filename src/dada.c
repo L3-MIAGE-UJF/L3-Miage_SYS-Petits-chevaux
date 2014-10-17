@@ -14,13 +14,13 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <string.h>
 
 #include "des.h"
-#include "plateau.h"
+#include "jeu.h"
+//#include "plateau.h"
 
-void gestionnaire_sigusr1(int numero) {
-
-}
+/* void gestionnaire_sigusr1(int numero) { } */
 
 int main(int argc, char *argv[]) {
 
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
 	 */
 
 	int status;
-	pid_t pidfork, pidfils[4];
+	pid_t pidfork, pidfils[5];
 
 	/**
 	 * Autres variables
@@ -56,8 +56,31 @@ int main(int argc, char *argv[]) {
 
 	struct sigaction action; //gestion signal
 
-	int * plateau; // Pointeur sur le plateau de jeu
 
+	/**
+	 * Pour chaque fils nous initialison une variable informant sur sa position et les structures d'informations qui vont transiter
+	 */
+//	int * plateau; // Pointeur sur le plateau de jeu
+
+	int position_j;
+	
+	struct_retourjeu retourjeu;
+	struct_retourjeu * retourjeulu;
+	
+	struct_pendantjeu pendantjeu;
+	struct_pendantjeu * pendantjeulu;
+
+	/*
+	 * Le programme principal enverra une information contenant le numero du prochain joueur devant jouer.
+	 */
+	 
+ 	struct_debutjeu debutjeu;
+ 	struct_debutjeu * debutjeulu;
+
+	/**
+	 * Allocation mémoire de ces structures.
+	 */
+	
 	/**
 	 * Initialisation du generateur de nombre aleatoire pour le lance de des
 	 */
@@ -67,7 +90,7 @@ int main(int argc, char *argv[]) {
 	 * Initialisation du generateur de nombre aleatoire pour le lance de des
 	 */
 
-	plateau = creation_plateau();
+	//plateau = creation_plateau();
 
 	/**
 	 * Création des pipes
@@ -80,7 +103,7 @@ int main(int argc, char *argv[]) {
     		}
 	}
 
-	for(num_fils=0;num_fils<nb_fils;num_fils++) {
+	for(num_fils=1;num_fils<=nb_fils;num_fils++) {
 		switch(pidfork=fork()) {
 			case -1 :
 				/**
@@ -96,15 +119,18 @@ int main(int argc, char *argv[]) {
 				/**
 				 * Code d'execution du fils num_fils
 				 */
-				
+				/*
 				action.sa_handler=gestionnaire_sigusr1;
 				sigemptyset(&action.sa_mask);
 				action.sa_flags=SA_RESTART;
-
+				
+				
 				if (sigaction(SIGUSR1, &action, NULL) != 0) {
 					fprintf(stderr, "Erreur dans sigaction \n");
 					exit(EXIT_FAILURE);
 				}
+				
+				*/
 
 				/**
 				 * Fermetures des pipes inutilises pour le fils en cours
@@ -135,16 +161,36 @@ int main(int argc, char *argv[]) {
 				 * Corps du fils num_fils
 				 */
 
+				// num_fils correspond au numéro du fils
+				// position_j correspond a la position du joueur , ils sont tous dans l'ecurie au départ soit 0
+
+				/*
 				fflush(stdout);
 				fprintf(stdout, "Je suis le fils %d avec le pid %d", num_fils, getpid());
-				system("date +\"%H:%M:%S\"");
+				//system("date +\"%H:%M:%S\"");
 				fprintf(stdout, "\n");
 				usleep(10000000); // 10 sec
 				fflush(stdout);
 				fprintf(stdout, "Fin fils %d avec le pid %d", num_fils, getpid());
-				system("date +\"%H:%M:%S\"");
+				//system("date +\"%H:%M:%S\"");
 				fprintf(stdout, "\n");
-
+				*/
+				
+				position_j=0;
+               
+				debutjeulu= (struct_debutjeu *) malloc(sizeof(struct_debutjeu));
+				
+				//usleep(10000000); // 10 sec
+				
+				if (read(pipes[num_fils][0], debutjeulu, sizeof(struct_debutjeu)) < 0) {
+				    perror("Read Error");
+				}
+				else {
+					fflush(stdout);
+					fprintf(stdout, "Je suis le fils %d avec le pid %d j'ai lu : %d  dans le pipe : %d \n", num_fils, getpid(), debutjeulu->numerojoueur, num_fils);
+				}
+				
+				
 				/**
 				 * Fermetures des pipes restant
 				 */
@@ -208,14 +254,32 @@ int main(int argc, char *argv[]) {
 	/**
 	 * Corps du programme
 	*/
+	/*
 	for(indice=0;indice<5;indice++) {
 		printf("alea : %d \n", lancer_des());
 	}
-
+	*/
 	
+	//On initialise le premier joueur, soit le fils 1 ayant pour indentifiant 0;
+	//debutjeu.numerojoueur=0;
 
-	usleep(2000000);
-	kill(pidfils[0],SIGUSR1);
+	//On ecrit cette structure dans le tube de chaque fils
+
+	debutjeu.numerojoueur=45;
+	
+	for(indice=1;indice<=4;indice++) {
+		if (write(pipes[indice][1], &debutjeu, sizeof(struct_debutjeu))<0) {
+			perror("Write Error");
+		}
+		else {
+			printf("ok pr fils %d\n", indice);
+			//printf("reveil fils %d avec le pid %d\n", indice, pidfils[indice]);
+			//kill(pidfils[indice],SIGUSR1);
+		}
+	}
+
+	//usleep(2000000);
+	//kill(pidfils[0],SIGUSR1);
 	
 	/**
 	 * Fermetures des pipes restants
@@ -236,7 +300,7 @@ int main(int argc, char *argv[]) {
 	/**
 	 * Fermeture du plateau
 	 */
-	suppr_plateau(plateau);
+	//suppr_plateau(plateau);
 
 	return 0;
 }
