@@ -2,8 +2,9 @@
 #define __JEU_H__
 
 typedef struct {
+	int partieencours; //=1 si la partie est toujours en cours
 	int numerojoueur;
-} struct_debutjeu;
+} struct_debuttour;
 
 typedef struct {
 	int numerojoueur;
@@ -13,7 +14,7 @@ typedef struct {
 
 typedef struct {
 	int numerojoueur;
-	int position_j;
+	int positionjoueur;
 } struct_pendantjeu;
 
 #endif
