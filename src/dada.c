@@ -16,14 +16,13 @@
 #include <signal.h>
 
 #include "des.h"
+#include "plateau.h"
 
 void gestionnaire_sigusr1(int numero) {
 
 }
 
 int main(int argc, char *argv[]) {
-
-	init_alea();
 
 	/**
 	 * Tableau de pipes
@@ -56,6 +55,19 @@ int main(int argc, char *argv[]) {
 	nb_fils = 4; // Quatres joueurs
 
 	struct sigaction action; //gestion signal
+
+	int * plateau; // Pointeur sur le plateau de jeu
+
+	/**
+	 * Initialisation du generateur de nombre aleatoire pour le lance de des
+	 */
+	init_alea();
+
+	/**
+	 * Initialisation du generateur de nombre aleatoire pour le lance de des
+	 */
+
+	plateau = creation_plateau();
 
 	/**
 	 * Création des pipes
@@ -196,9 +208,12 @@ int main(int argc, char *argv[]) {
 	/**
 	 * Corps du programme
 	*/
-	for(indice=0;indice<45;indice++) {
+	for(indice=0;indice<5;indice++) {
 		printf("alea : %d \n", lancer_des());
 	}
+
+	
+
 	usleep(2000000);
 	kill(pidfils[0],SIGUSR1);
 	
@@ -217,5 +232,11 @@ int main(int argc, char *argv[]) {
 		fprintf(stdout, "Le fils avec le pid %d est mort\n", pidfork);
 	}
 	
+
+	/**
+	 * Fermeture du plateau
+	 */
+	suppr_plateau(plateau);
+
 	return 0;
 }
