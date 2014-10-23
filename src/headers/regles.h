@@ -9,8 +9,12 @@
 
 int cest_mon_tour(int num_fils, struct_debuttour * debuttourlu);
 
-int nouvelle_position(int num_fils, int positionjoueur, int resultatde);
+int nouvelle_position(int num_fils, int positionjoueur, int resultatde, int *danslescalier);
 
 int le_joueur_a_gagne(struct_retourjeu * retourjeulu);
+
+void conflit_entre_deux_joueur(struct_pendantjeu * pendantjeulu, int * positionjoueur);
+
+void position_escalier(int num_fils, int positionjoueur, int resultatde);
 
 #endif

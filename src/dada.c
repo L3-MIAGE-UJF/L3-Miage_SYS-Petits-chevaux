@@ -105,7 +105,12 @@ int main(int argc, char *argv[]) {
 
 	int positionjoueur;
 	
-	int resultatde;
+	int resultatde, i;
+	int danslescalier[4];
+
+	for(i=0;i<=4;i++){
+		danslescalier[i]=0;
+	}
 	
 	struct_retourjeu retourjeu;
 	struct_retourjeu * retourjeulu;
@@ -188,9 +193,10 @@ int main(int argc, char *argv[]) {
 					lancer_des();
 					usleep(10);
 
+
 					if (cest_mon_tour(num_fils, debuttourlu)) {
 
-						resultatde=je_joue(num_fils, &positionjoueur, &pendantjeu);
+						resultatde=je_joue(num_fils, &positionjoueur, &pendantjeu, danslescalier );
 
 						je_transmet_mon_resultat_au_voisin(num_fils, pipes, &pendantjeu);
 
@@ -201,6 +207,8 @@ int main(int argc, char *argv[]) {
 					else {
 						je_fais_passer_le_message(num_fils, pipes, pendantjeulu);
 						//mode je lit et regarde si je doit reculer
+						conflit_entre_deux_joueur(pendantjeulu, &positionjoueur);
+						
 					}
 					
 					cest_a_qui_de_jouer(num_fils, pipes, debuttourlu);						
