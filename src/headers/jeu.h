@@ -40,7 +40,9 @@ typedef struct struct_retourjeu {
 typedef struct struct_pendantjeu {
 	int numerojoueur; /*!< Indique le joueur venant de jouer. */
 	int positionjoueur; /*!< Indique la nouvelle position de ce joueur. Utile pour faire revenir les chevaux a la case depart si deux se trouvent simultanement sur la meme case. */
-	// joueur a termine
+	/**
+	 * Amélioration : Ajouter une information si le joueur a termine.
+	 */
 } struct_pendantjeu;
 
 

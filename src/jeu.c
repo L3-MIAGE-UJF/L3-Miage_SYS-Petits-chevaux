@@ -148,7 +148,7 @@ void je_fais_passer_le_message(int num_fils, int ** pipes, struct_pendantjeu * p
  * On lui envoie alors dans le pipe des fils vers le père.
  * \param    num_fils	Int - Correspond au numéro du fils souhaitant récupérer les informations.
  * \param    pipes	Tableau des pipes.
- * \param    retourjeu 	Pointeur sur la structure contenant les informations du jeu qui vient d'être fait et ayant fait le tour.
+ * \param    retourjeu 		Pointeur sur la structure contenant les informations du jeu qui vient d'être fait et ayant fait le tour.
  * \param    resultatde 	Valeur du dé lancé. Utile pour le père afin de savoir si le fils doit rejouer ou non. En cas de double 6.
  * \param    positionjoueur 	Nouvelle position du joueur. Utile pour savoir si un joueur est arrivé au bout de sa course. 
  * \return    Void - Termine en cas d'erreur
@@ -164,14 +164,12 @@ void je_transmet_mon_resultat_au_pere(int num_fils, int ** pipes, struct_retourj
 }
 
 /**
- * \brief       Transmet les informations au père.
- * \details    Quand les informations transmises ont fait le tour, on génère une structure contenant les informations dont le père aura besoin pour modérer.
- * On lui envoie alors dans le pipe des fils vers le père.
- * \param    num_fils	Int - Correspond au numéro du fils souhaitant récupérer les informations.
+ * \brief       Transmet les informations du père vers les fils.
+ * \details    Quand les informations transmises au père ont été analysé, ou lors du premier tour le père doit envoyer des informations au fils.
  * \param    pipes	Tableau des pipes.
- * \param    retourjeu 	Pointeur sur la structure contenant les informations du jeu qui vient d'être fait et ayant fait le tour.
- * \param    resultatde 	Valeur du dé lancé. Utile pour le père afin de savoir si le fils doit rejouer ou non. En cas de double 6.
- * \param    positionjoueur 	Nouvelle position du joueur. Utile pour savoir si un joueur est arrivé au bout de sa course. 
+ * \param    debuttour	 	Pointeur sur la structure devant contenir les informations qui vont être transmises au joueur.
+ * \param    numerojoueur 	Numéro du prochain joueur devant jouer.
+ * \param    partieencours 	Indique si la partie est toujours en cours. (1 oui | 0 - non)
  * \return    Void - Termine en cas d'erreur
  */
 
@@ -186,10 +184,11 @@ void pere_envoyer_message_aux_fils(int ** pipes, struct_debuttour * debuttour, i
 }
 
 /**
- * \brief       Fonction de verification du bon deroulement de read.
- * \details    Verifie que l'operation de lecture dans un pipe s'est bien deroulée.
- * \param    result	Int - Correspond au resultat de la fonction read appellée en parametre.
- * \return    Void - Termine le programme en cas d'erreur
+ * \brief       Lecture des informations transmises par les fils.
+ * \details    Le joueur qui vient de jouer fait remonter des informations au père une fois qu'il vient de terminer de faire circuler des informations aux autres joueurs.
+ * \param    pipes	Tableau des pipes.
+ * \param    retourjeulu	 Pointeur sur la structure devant contenir les informations destinées au père par le joueurs.
+ * \return    Void - Termine en cas d'erreur
  */
 	
 void pere_lit_retour_tour(int ** pipes, struct_retourjeu * retourjeulu) {
@@ -199,10 +198,10 @@ void pere_lit_retour_tour(int ** pipes, struct_retourjeu * retourjeulu) {
 }
 
 /**
- * \brief       Fonction de verification du bon deroulement de read.
- * \details    Verifie que l'operation de lecture dans un pipe s'est bien deroulée.
- * \param    result	Int - Correspond au resultat de la fonction read appellée en parametre.
- * \return    Void - Termine le programme en cas d'erreur
+ * \brief       Indique le prochain joueur devant jouer.
+ * \details    Selon le retour des informations renvoyées au père après un tour de jeu. Le père décide si il fait rejouer un joueur (en cas de double 6), ou si il donne la main au suivant.
+ * \param    retourjeulu	 Pointeur sur la structure devant contenir les informations destinées au père par le joueurs.
+ * \return    result	Int - Le numéro du prochain joueur devant s'executer.
  */
 
 int joueur_suivant(struct_retourjeu * retourjeulu) {

@@ -9,6 +9,7 @@
 
 /**
  * \brief       Initialise le generateur de nombres aleatoires
+ * \details	Initialise la graine allant servir pour la génération de nombres aléatoire.
  * \return    Void
  */
 
