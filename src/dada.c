@@ -19,6 +19,7 @@
 
 #include "headers/des.h"
 #include "headers/jeu.h"
+#include "headers/regles.h"
 #include "headers/pipes.h"
 
 
@@ -155,53 +156,27 @@ int main(int argc, char *argv[]) {
 				 */
 							
 				// Tant que le jeu n'est pas fini on regarde si c'est au fils de jouer
-				checkR(read(pipes[num_fils][0], debuttourlu, sizeof(struct_debuttour)));
+				cest_a_qui_de_jouer(num_fils, pipes, debuttourlu);
+
 				
-				int resultatdes;
-				while(debuttourlu->partieencours==1){
+				while(!la_partie_est_interrompue(debuttourlu)){
 
 					sleep(1);
 					lancer_des(); // ? sinon alea donne memes valeurs
 
 					if (cest_mon_tour(num_fils, debuttourlu)) {
-//						je_joue(num_fils);
-						pendantjeu.numerojoueur = num_fils;
-						pendantjeu.positionjoueur = lancer_des(); 
-						printf("fils %d a lance les des : %d \n",num_fils, pendantjeu.positionjoueur);
-						// on écrit dans le pipe du joueur suivant
+						je_joue(num_fils, &pendantjeu);
+
+						je_transmet_mon_resultat_au_voisin(num_fils, pipes, &pendantjeu);
 						
-						checkW(write(pipes[num_fils+4][1], &pendantjeu, sizeof(struct_pendantjeu)));
+						jattend_que_linfo_fasse_le_tour (num_fils, pipes, pendantjeulu);
 						
-						//passe en mode lecture dans le pipe du precedent puis renvoie au pere quand il relit la valeur qu'il a envoyé
-						if(num_fils==1){
-							checkR(read(pipes[8][0], pendantjeulu,sizeof(struct_pendantjeu)));
-							//printf("fils %d lit dans pipe %d\n", num_fils, 8);
-						}
-						else{
-							//printf("fils %d lit dans pipe %d\n", num_fils, num_fils+3);
-							checkR(read(pipes[num_fils+3][0], pendantjeulu, sizeof(struct_pendantjeu)));
-						}
-						
-						printf("Tour d'info fini , fils %d a relu %d la val %d\n", num_fils, pendantjeulu->numerojoueur, pendantjeulu->positionjoueur);
 					}
 					else {
-//						je_fais_passer_le_message();
-						//printf("fils %d en attente \n", num_fils);
-						//lit valeur du joueur precedent et renvoie vers le suivant
-						if(num_fils==1){
-							checkR(read(pipes[8][0], pendantjeulu,sizeof(struct_pendantjeu)));
-						}
-						else{
-							checkR(read(pipes[num_fils+3][0], pendantjeulu, sizeof(struct_pendantjeu)));
-						}
-						printf("fils %d fait transiter info %d\n", num_fils, pendantjeulu->positionjoueur);
-						//on renvoie au suivant
-						checkW(write(pipes[num_fils+4][1], pendantjeulu, sizeof(struct_pendantjeu)));		
+						je_fais_passer_le_message(num_fils, pipes, pendantjeulu);
 					}
-
 					
-					checkR(read(pipes[num_fils][0], debuttourlu, sizeof(struct_debuttour)));				
-							
+					cest_a_qui_de_jouer(num_fils, pipes, debuttourlu);						
 				}
 
 				/**

@@ -1,5 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+
+#include "headers/jeu.h"
+#include "headers/dada.h"
+#include "headers/des.h"
 
 int premier_joueur(void) {
 	char buff[10]={0};
@@ -16,10 +21,54 @@ int premier_joueur(void) {
 	return (int) (buff[0]-'0');
 }
 
+void cest_a_qui_de_jouer(int num_fils, int ** pipes, struct_debuttour * debuttourlu) {
+	checkR(read(pipes[num_fils][0], debuttourlu, sizeof(struct_debuttour)));
+}
 
-//je_joue(num_fils);
+int la_partie_est_interrompue(struct_debuttour * debuttourlu) {
+	return (debuttourlu->partieencours) ? 0 : 1;
+}
 
-//je_fais_passer_le_message();
+void je_joue(int num_fils, struct_pendantjeu * pendantjeu) {
+	pendantjeu->numerojoueur = num_fils;
+	pendantjeu->positionjoueur = lancer_des(); 
+	printf("fils %d a lance les des : %d \n",num_fils, pendantjeu->positionjoueur);
+}
+	
+void je_transmet_mon_resultat_au_voisin(int num_fils, int ** pipes, struct_pendantjeu * pendantjeu) {
+	// on écrit dans le pipe du joueur suivant
+	checkW(write(pipes[num_fils+4][1], pendantjeu, sizeof(struct_pendantjeu)));
+}
+
+void jattend_que_linfo_fasse_le_tour (int num_fils, int ** pipes, struct_pendantjeu * pendantjeulu) {
+	//passe en mode lecture dans le pipe du precedent puis renvoie au pere quand il relit la valeur qu'il a envoyé
+	if(num_fils==1){
+		checkR(read(pipes[8][0], pendantjeulu, sizeof(struct_pendantjeu)));
+		//printf("fils %d lit dans pipe %d\n", num_fils, 8);
+	}
+	else{
+		//printf("fils %d lit dans pipe %d\n", num_fils, num_fils+3);
+		checkR(read(pipes[num_fils+3][0], pendantjeulu, sizeof(struct_pendantjeu)));
+	}
+
+	printf("Tour d'info fini , fils %d a relu %d la val %d\n", num_fils, pendantjeulu->numerojoueur, pendantjeulu->positionjoueur);
+}
+
+void je_fais_passer_le_message(int num_fils, int ** pipes, struct_pendantjeu * pendantjeulu) {
+	
+	//printf("fils %d en attente \n", num_fils);
+	//lit valeur du joueur precedent et renvoie vers le suivant
+	
+	if(num_fils==1){
+		checkR(read(pipes[8][0], pendantjeulu,sizeof(struct_pendantjeu)));
+	}
+	else{
+		checkR(read(pipes[num_fils+3][0], pendantjeulu, sizeof(struct_pendantjeu)));
+	}
+	printf("fils %d fait transiter info %d\n", num_fils, pendantjeulu->positionjoueur);
+	//on renvoie au suivant
+	checkW(write(pipes[num_fils+4][1], pendantjeulu, sizeof(struct_pendantjeu)));
+}
 
  /**
  * \brief      Couleur possible pour un Point.
