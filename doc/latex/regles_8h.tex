@@ -1,0 +1,92 @@
+\hypertarget{regles_8h}{\section{Référence du fichier src/headers/regles.h}
+\label{regles_8h}\index{src/headers/regles.\-h@{src/headers/regles.\-h}}
+}
+
+
+Declaration des fonctions relatives aux regles pour le jeu Petits chevaux.  
+
+
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{regles_8h_a3a15257ac8021d722d70910d9eadd3b9}{cest\-\_\-mon\-\_\-tour} (int num\-\_\-fils, \hyperlink{structstruct__debuttour}{struct\-\_\-debuttour} $\ast$debuttourlu)
+\begin{DoxyCompactList}\small\item\em Indique au joueur si c'est a son tour de jouer. \end{DoxyCompactList}\item 
+int \hyperlink{regles_8h_a14d8af584e9671d7a2f9ba56838f4672}{nouvelle\-\_\-position} (int num\-\_\-fils, int positionjoueur, int resultatde)
+\begin{DoxyCompactList}\small\item\em Donne une nouvelle position pour un joueur. \end{DoxyCompactList}\item 
+int \hyperlink{regles_8h_a410ef983e618f644c9927192f5656443}{le\-\_\-joueur\-\_\-a\-\_\-gagne} (\hyperlink{structstruct__retourjeu}{struct\-\_\-retourjeu} $\ast$retourjeulu)
+\begin{DoxyCompactList}\small\item\em Indique si le joueur a gagné. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Declaration des fonctions relatives aux regles pour le jeu Petits chevaux. \begin{DoxyAuthor}{Auteur}
+A\-O\-U\-N Abel et D\-O\-U\-C\-H\-E\-T Maximilien 
+\end{DoxyAuthor}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{regles_8h_a3a15257ac8021d722d70910d9eadd3b9}{\index{regles.\-h@{regles.\-h}!cest\-\_\-mon\-\_\-tour@{cest\-\_\-mon\-\_\-tour}}
+\index{cest\-\_\-mon\-\_\-tour@{cest\-\_\-mon\-\_\-tour}!regles.h@{regles.\-h}}
+\subsubsection[{cest\-\_\-mon\-\_\-tour}]{\setlength{\rightskip}{0pt plus 5cm}int cest\-\_\-mon\-\_\-tour (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-fils, }
+\item[{{\bf struct\-\_\-debuttour} $\ast$}]{debuttourlu}
+\end{DoxyParamCaption}
+)}}\label{regles_8h_a3a15257ac8021d722d70910d9eadd3b9}
+
+
+Indique au joueur si c'est a son tour de jouer. 
+
+Celon la valeur renvoyée le joueur effectuera son tour ou non. 
+\begin{DoxyParams}{Paramètres}
+{\em num\-\_\-fils} & Correspond au numéro du fils appelant la fonction. \\
+\hline
+{\em debuttourlu} & Correspond a la structure que le joueur a recu dans le pipe par le père. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Int Renvoie 0 si ce n'est pas au fils de jouer et 1 si c'est son tour. 
+\end{DoxyReturn}
+\hypertarget{regles_8h_a410ef983e618f644c9927192f5656443}{\index{regles.\-h@{regles.\-h}!le\-\_\-joueur\-\_\-a\-\_\-gagne@{le\-\_\-joueur\-\_\-a\-\_\-gagne}}
+\index{le\-\_\-joueur\-\_\-a\-\_\-gagne@{le\-\_\-joueur\-\_\-a\-\_\-gagne}!regles.h@{regles.\-h}}
+\subsubsection[{le\-\_\-joueur\-\_\-a\-\_\-gagne}]{\setlength{\rightskip}{0pt plus 5cm}int le\-\_\-joueur\-\_\-a\-\_\-gagne (
+\begin{DoxyParamCaption}
+\item[{{\bf struct\-\_\-retourjeu} $\ast$}]{retourjeulu}
+\end{DoxyParamCaption}
+)}}\label{regles_8h_a410ef983e618f644c9927192f5656443}
+
+
+Indique si le joueur a gagné. 
+
+Selon le resultat du jeu d'un fils, cela indique si ce fils a gagné 
+\begin{DoxyParams}{Paramètres}
+{\em retourjeulu} & Structure contenant toutes les informations importantes sur le jeu et le joueur qui vient de jouer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Int Renvoie 0 si il n'a pas encore gagné et 1 si il est vainqueur. 
+\end{DoxyReturn}
+\hypertarget{regles_8h_a14d8af584e9671d7a2f9ba56838f4672}{\index{regles.\-h@{regles.\-h}!nouvelle\-\_\-position@{nouvelle\-\_\-position}}
+\index{nouvelle\-\_\-position@{nouvelle\-\_\-position}!regles.h@{regles.\-h}}
+\subsubsection[{nouvelle\-\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}int nouvelle\-\_\-position (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-fils, }
+\item[{int}]{positionjoueur, }
+\item[{int}]{resultatde}
+\end{DoxyParamCaption}
+)}}\label{regles_8h_a14d8af584e9671d7a2f9ba56838f4672}
+
+
+Donne une nouvelle position pour un joueur. 
+
+Donne une nouvelle position selon la position et le numero de joueur transmis. 
+\begin{DoxyParams}{Paramètres}
+{\em num\-\_\-fils} & Correspond au numéro du fils appelant la fonction. \\
+\hline
+{\em positionjoueur} & Correspond a la position du fils appelant la fonction. \\
+\hline
+{\em resultatde} & Correspond a la valeur du lance de des du joueur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Int Renvoie 0 si ce n'est pas au fils de jouer et 1 si c'est son tour. 
+\end{DoxyReturn}

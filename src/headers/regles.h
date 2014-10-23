@@ -1,3 +1,9 @@
+/**
+ * \file	regles.h
+ * \author	AOUN Abel et DOUCHET Maximilien
+ * \brief       Declaration des fonctions relatives aux regles pour le jeu Petits chevaux.
+ */
+
 #ifndef __REGLES_H__
 #define __REGLES_H__
 

@@ -1,0 +1,126 @@
+\hypertarget{dada_8c}{\section{Référence du fichier src/dada.c}
+\label{dada_8c}\index{src/dada.\-c@{src/dada.\-c}}
+}
+
+
+Programme de jeu des petits chevaux utilisant des fork() et des pipes.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+{\ttfamily \#include $<$sys/types.\-h$>$}\\*
+{\ttfamily \#include $<$sys/wait.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}headers/des.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}headers/jeu.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}headers/regles.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}headers/pipes.\-h\char`\"{}}\\*
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{dada_8c_a97c9452b045a7fdb188a62e97b58e5d8}{check\-R} (int result)
+\begin{DoxyCompactList}\small\item\em Fonction de verification du bon deroulement de read. \end{DoxyCompactList}\item 
+void \hyperlink{dada_8c_a0f46c4e07b6faf548c663e9f8155ef48}{check\-W} (int result)
+\begin{DoxyCompactList}\small\item\em Fonction de verification du bon deroulement de write. \end{DoxyCompactList}\item 
+int \hyperlink{dada_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Corps du programme Petit Chevaux. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Programme de jeu des petits chevaux utilisant des fork() et des pipes. \begin{DoxyAuthor}{Auteur}
+A\-O\-U\-N Abel et D\-O\-U\-C\-H\-E\-T Maximilien
+\end{DoxyAuthor}
+Fichier Principal du programme dada 
+
+\subsection{Documentation des fonctions}
+\hypertarget{dada_8c_a97c9452b045a7fdb188a62e97b58e5d8}{\index{dada.\-c@{dada.\-c}!check\-R@{check\-R}}
+\index{check\-R@{check\-R}!dada.c@{dada.\-c}}
+\subsubsection[{check\-R}]{\setlength{\rightskip}{0pt plus 5cm}void check\-R (
+\begin{DoxyParamCaption}
+\item[{int}]{result}
+\end{DoxyParamCaption}
+)}}\label{dada_8c_a97c9452b045a7fdb188a62e97b58e5d8}
+
+
+Fonction de verification du bon deroulement de read. 
+
+Fonctions de vérification pour les opérations read et write
+
+Verifie que l'operation de lecture dans un pipe s'est bien deroulée. 
+\begin{DoxyParams}{Paramètres}
+{\em result} & Int -\/ Correspond au resultat de la fonction read appellée en parametre. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Void -\/ Termine le programme en cas d'erreur 
+\end{DoxyReturn}
+\hypertarget{dada_8c_a0f46c4e07b6faf548c663e9f8155ef48}{\index{dada.\-c@{dada.\-c}!check\-W@{check\-W}}
+\index{check\-W@{check\-W}!dada.c@{dada.\-c}}
+\subsubsection[{check\-W}]{\setlength{\rightskip}{0pt plus 5cm}void check\-W (
+\begin{DoxyParamCaption}
+\item[{int}]{result}
+\end{DoxyParamCaption}
+)}}\label{dada_8c_a0f46c4e07b6faf548c663e9f8155ef48}
+
+
+Fonction de verification du bon deroulement de write. 
+
+Verifie que l'operation d'ecriture dans un pipe s'est bien deroulée. 
+\begin{DoxyParams}{Paramètres}
+{\em result} & Int -\/ Correspond au resultat de la fonction read appellée en parametre. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Void -\/ Termine le programme en cas d'erreur 
+\end{DoxyReturn}
+\hypertarget{dada_8c_a0ddf1224851353fc92bfbff6f499fa97}{\index{dada.\-c@{dada.\-c}!main@{main}}
+\index{main@{main}!dada.c@{dada.\-c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{dada_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+Corps du programme Petit Chevaux. 
+
+\begin{DoxyReturn}{Renvoie}
+E\-X\-I\-T\-\_\-\-S\-U\-C\-C\-E\-S\-S -\/ Arrêt normal du programme. 
+\end{DoxyReturn}
+Déclaration et instanciation du tableau de pipes. Se référer à \hyperlink{pipes_8h}{pipes.\-h} pour plus d'information.
+
+tableau des P\-I\-D de chaque fils, pid renvoyé par fork et le status renvoyé par les wait finaux
+
+Autres variables
+
+Pour chaque fils nous initialison une variable informant sur sa position et les structures d'informations qui vont transiter
+
+Allocation mémoire de ces structures.
+
+Initialisation du generateur de nombre aleatoire pour le lance de des
+
+Création des pipes
+
+En cas d'erreur lors de la creation du fork
+
+Code d'execution du fils num\-\_\-fils La variable num\-\_\-fils correspond au numéro du fils en cours
+
+Fermetures des pipes inutilises pour le fils en cours
+
+Instanciation et initialisation de variables propres au fils num\-\_\-fils.
+
+Corps du fils num\-\_\-fils
+
+Fermetures des pipes restant
+
+Code d'execution du programme principal, poursuite de la création de fils
+
+Suite du programme principal
+
+Fermetures des pipes inutilises
+
+Corps du programme
+
+Fermetures des pipes restants

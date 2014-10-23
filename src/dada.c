@@ -1,8 +1,6 @@
 /**
  * \file	dada.c
  * \author	AOUN Abel et DOUCHET Maximilien
- * \version	1.0
- * \date	14/10/2014
  * \brief       Programme de jeu des petits chevaux utilisant des fork() et des pipes.
  *
  * \details	Fichier Principal du programme dada
@@ -27,6 +25,14 @@
  * Fonctions de vérification pour les opérations read et write
  */
  
+ 
+/**
+ * \brief       Fonction de verification du bon deroulement de read.
+ * \details    Verifie que l'operation de lecture dans un pipe s'est bien deroulée.
+ * \param    result	Int - Correspond au resultat de la fonction read appellée en parametre.
+ * \return    Void - Termine le programme en cas d'erreur
+ */
+ 
 void checkR(int result) {
 	if (result < 0) {
 		perror("Read Error");
@@ -34,6 +40,13 @@ void checkR(int result) {
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * \brief       Fonction de verification du bon deroulement de write.
+ * \details    Verifie que l'operation d'ecriture dans un pipe s'est bien deroulée.
+ * \param    result	Int - Correspond au resultat de la fonction read appellée en parametre.
+ * \return    Void - Termine le programme en cas d'erreur
+ */
 
 void checkW(int result) {
 	if (result < 0) {
@@ -45,7 +58,10 @@ void checkW(int result) {
 
 
 /**
- * Corps du programme.
+ * \fn int main (int argc, char *argv[])
+ * \brief Corps du programme Petit Chevaux
+ *
+ * \return EXIT_SUCCESS - Arrêt normal du programme.
  */
  
 int main(int argc, char *argv[]) {

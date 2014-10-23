@@ -1,0 +1,307 @@
+\hypertarget{jeu_8c}{\section{Référence du fichier src/jeu.c}
+\label{jeu_8c}\index{src/jeu.\-c@{src/jeu.\-c}}
+}
+
+
+Fonctions relatives au jeu pour le programme Petits Chevaux.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}headers/jeu.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}headers/dada.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}headers/des.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}headers/regles.\-h\char`\"{}}\\*
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{jeu_8c_aad47be4fef9e94264139f82a73b259ae}{premier\-\_\-joueur} (void)
+\begin{DoxyCompactList}\small\item\em Selection par l'utilisateur du premier joueur. \end{DoxyCompactList}\item 
+void \hyperlink{jeu_8c_a725da0480654655d9b7fefa6c8b8ec1d}{cest\-\_\-a\-\_\-qui\-\_\-de\-\_\-jouer} (int num\-\_\-fils, int $\ast$$\ast$pipes, \hyperlink{structstruct__debuttour}{struct\-\_\-debuttour} $\ast$debuttourlu)
+\begin{DoxyCompactList}\small\item\em Recupere les informations pour le prochain tour. \end{DoxyCompactList}\item 
+int \hyperlink{jeu_8c_a9b781c5cf503cd1379cd5363baf5518b}{la\-\_\-partie\-\_\-est\-\_\-interrompue} (\hyperlink{structstruct__debuttour}{struct\-\_\-debuttour} $\ast$debuttourlu)
+\begin{DoxyCompactList}\small\item\em Verifie si la partie n'a pas été interrompue. \end{DoxyCompactList}\item 
+int \hyperlink{jeu_8c_aae8ac69439d6ed8e1dd5b57251701a2f}{je\-\_\-joue} (int num\-\_\-fils, int $\ast$positionjoueur, \hyperlink{structstruct__pendantjeu}{struct\-\_\-pendantjeu} $\ast$pendantjeu)
+\begin{DoxyCompactList}\small\item\em Action effectuées par le joueur lorsque que vient son tour. \end{DoxyCompactList}\item 
+void \hyperlink{jeu_8c_a0a25bcc79238a489f286585b395ccd17}{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin} (int num\-\_\-fils, int $\ast$$\ast$pipes, \hyperlink{structstruct__pendantjeu}{struct\-\_\-pendantjeu} $\ast$pendantjeu)
+\begin{DoxyCompactList}\small\item\em Transmission des informations du jeu d'un joueurs aux autres joueurs. \end{DoxyCompactList}\item 
+void \hyperlink{jeu_8c_af71947ee506f911a3e0b09dd28198e5e}{jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour} (int num\-\_\-fils, int $\ast$$\ast$pipes, \hyperlink{structstruct__pendantjeu}{struct\-\_\-pendantjeu} $\ast$pendantjeulu)
+\begin{DoxyCompactList}\small\item\em Attente après envoie des informations du retour de ces informations. \end{DoxyCompactList}\item 
+void \hyperlink{jeu_8c_afbccfff41a7a1c5872f6f129a8a9ab44}{je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message} (int num\-\_\-fils, int $\ast$$\ast$pipes, \hyperlink{structstruct__pendantjeu}{struct\-\_\-pendantjeu} $\ast$pendantjeulu)
+\begin{DoxyCompactList}\small\item\em Fait passer les informations au suivant. \end{DoxyCompactList}\item 
+void \hyperlink{jeu_8c_aedc8c2b1001e2680710ac7ef3d73cac8}{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere} (int num\-\_\-fils, int $\ast$$\ast$pipes, \hyperlink{structstruct__retourjeu}{struct\-\_\-retourjeu} $\ast$retourjeu, int resultatde, int positionjoueur)
+\begin{DoxyCompactList}\small\item\em Transmet les informations au père. \end{DoxyCompactList}\item 
+void \hyperlink{jeu_8c_a2a267585992923972c7c142df69c5b89}{pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils} (int $\ast$$\ast$pipes, \hyperlink{structstruct__debuttour}{struct\-\_\-debuttour} $\ast$debuttour, int numerojoueur, int partieencours)
+\begin{DoxyCompactList}\small\item\em Transmet les informations au père. \end{DoxyCompactList}\item 
+void \hyperlink{jeu_8c_a96da99031da1d74f38b559243dad2171}{pere\-\_\-lit\-\_\-retour\-\_\-tour} (int $\ast$$\ast$pipes, \hyperlink{structstruct__retourjeu}{struct\-\_\-retourjeu} $\ast$retourjeulu)
+\begin{DoxyCompactList}\small\item\em Fonction de verification du bon deroulement de read. \end{DoxyCompactList}\item 
+int \hyperlink{jeu_8c_ab99f683f90789787a7d8201407214cc1}{joueur\-\_\-suivant} (\hyperlink{structstruct__retourjeu}{struct\-\_\-retourjeu} $\ast$retourjeulu)
+\begin{DoxyCompactList}\small\item\em Fonction de verification du bon deroulement de read. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Fonctions relatives au jeu pour le programme Petits Chevaux. \begin{DoxyAuthor}{Auteur}
+A\-O\-U\-N Abel et D\-O\-U\-C\-H\-E\-T Maximilien 
+\end{DoxyAuthor}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{jeu_8c_a725da0480654655d9b7fefa6c8b8ec1d}{\index{jeu.\-c@{jeu.\-c}!cest\-\_\-a\-\_\-qui\-\_\-de\-\_\-jouer@{cest\-\_\-a\-\_\-qui\-\_\-de\-\_\-jouer}}
+\index{cest\-\_\-a\-\_\-qui\-\_\-de\-\_\-jouer@{cest\-\_\-a\-\_\-qui\-\_\-de\-\_\-jouer}!jeu.c@{jeu.\-c}}
+\subsubsection[{cest\-\_\-a\-\_\-qui\-\_\-de\-\_\-jouer}]{\setlength{\rightskip}{0pt plus 5cm}void cest\-\_\-a\-\_\-qui\-\_\-de\-\_\-jouer (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-fils, }
+\item[{int $\ast$$\ast$}]{pipes, }
+\item[{{\bf struct\-\_\-debuttour} $\ast$}]{debuttourlu}
+\end{DoxyParamCaption}
+)}}\label{jeu_8c_a725da0480654655d9b7fefa6c8b8ec1d}
+
+
+Recupere les informations pour le prochain tour. 
+
+Récupère dans le pipe venant du main vers le joueur concerné la structure contenant les informations pour le prochain tour. 
+\begin{DoxyParams}{Paramètres}
+{\em num\-\_\-fils} & Int -\/ Correspond au numéro du fils souhaitant récupérer les informations. \\
+\hline
+{\em pipes} & Tableau des pipes. \\
+\hline
+{\em debuttourlu} & Pointeur sur la structure. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Void 
+\end{DoxyReturn}
+\hypertarget{jeu_8c_af71947ee506f911a3e0b09dd28198e5e}{\index{jeu.\-c@{jeu.\-c}!jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour@{jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour}}
+\index{jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour@{jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour}!jeu.c@{jeu.\-c}}
+\subsubsection[{jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour}]{\setlength{\rightskip}{0pt plus 5cm}void jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-fils, }
+\item[{int $\ast$$\ast$}]{pipes, }
+\item[{{\bf struct\-\_\-pendantjeu} $\ast$}]{pendantjeulu}
+\end{DoxyParamCaption}
+)}}\label{jeu_8c_af71947ee506f911a3e0b09dd28198e5e}
+
+
+Attente après envoie des informations du retour de ces informations. 
+
+Permet la récupération des informations envoyés par le biais du joueur précédent. Ce en lisant dans le pipe du joueur précédent le num\-\_\-fils. Quand l'information sera revenue, elle aura fait le tour. 
+\begin{DoxyParams}{Paramètres}
+{\em num\-\_\-fils} & Int -\/ Correspond au numéro du fils souhaitant récupérer les informations. \\
+\hline
+{\em pipes} & Tableau des pipes. \\
+\hline
+{\em pendantjeulu} & Pointeur sur la structure contenant les informations du jeu qui vient d'être fait et transmis par le voisin précédent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Void -\/ Termine en cas d'erreur 
+\end{DoxyReturn}
+\hypertarget{jeu_8c_afbccfff41a7a1c5872f6f129a8a9ab44}{\index{jeu.\-c@{jeu.\-c}!je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message@{je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message}}
+\index{je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message@{je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message}!jeu.c@{jeu.\-c}}
+\subsubsection[{je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message}]{\setlength{\rightskip}{0pt plus 5cm}void je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-fils, }
+\item[{int $\ast$$\ast$}]{pipes, }
+\item[{{\bf struct\-\_\-pendantjeu} $\ast$}]{pendantjeulu}
+\end{DoxyParamCaption}
+)}}\label{jeu_8c_afbccfff41a7a1c5872f6f129a8a9ab44}
+
+
+Fait passer les informations au suivant. 
+
+Permet la transmission des informations envoyés par le biais du joueur précédent. Ce en lisant dans le pipe du joueur précédent le num\-\_\-fils. On l'envoie au suivant immédiatement. Cela nous permet d'appliquer la regle pour que le joueur revienne au point de départ si un autre joueur est arrivé sur la même case. Cette fonction est appellée lorsque ce n'est pas à num\-\_\-fils de jouer. 
+\begin{DoxyParams}{Paramètres}
+{\em num\-\_\-fils} & Int -\/ Correspond au numéro du fils souhaitant récupérer les informations. \\
+\hline
+{\em pipes} & Tableau des pipes. \\
+\hline
+{\em pendantjeulu} & Pointeur sur la structure contenant les informations du jeu qui vient d'être transmis par le voisin précédent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Void -\/ Termine en cas d'erreur 
+\end{DoxyReturn}
+\hypertarget{jeu_8c_aae8ac69439d6ed8e1dd5b57251701a2f}{\index{jeu.\-c@{jeu.\-c}!je\-\_\-joue@{je\-\_\-joue}}
+\index{je\-\_\-joue@{je\-\_\-joue}!jeu.c@{jeu.\-c}}
+\subsubsection[{je\-\_\-joue}]{\setlength{\rightskip}{0pt plus 5cm}int je\-\_\-joue (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-fils, }
+\item[{int $\ast$}]{positionjoueur, }
+\item[{{\bf struct\-\_\-pendantjeu} $\ast$}]{pendantjeu}
+\end{DoxyParamCaption}
+)}}\label{jeu_8c_aae8ac69439d6ed8e1dd5b57251701a2f}
+
+
+Action effectuées par le joueur lorsque que vient son tour. 
+
+Le joueur lance un dé, demande aux reglès quelle est sa nouvelle position et enregistre ces informations. 
+\begin{DoxyParams}{Paramètres}
+{\em num\-\_\-fils} & Int -\/ Correspond au numéro du fils souhaitant récupérer les informations. \\
+\hline
+{\em positionjoueur} & Pointeur sur la position du joueur appelant la fonction. \\
+\hline
+{\em pendantjeu} & Pointeur sur la structure qui va être transmise aux autres joueurs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Int -\/ Retourne le resultat du lancé de dé, la position est déjà modifiée. 
+\end{DoxyReturn}
+\hypertarget{jeu_8c_aedc8c2b1001e2680710ac7ef3d73cac8}{\index{jeu.\-c@{jeu.\-c}!je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere@{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere}}
+\index{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere@{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere}!jeu.c@{jeu.\-c}}
+\subsubsection[{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere}]{\setlength{\rightskip}{0pt plus 5cm}void je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-fils, }
+\item[{int $\ast$$\ast$}]{pipes, }
+\item[{{\bf struct\-\_\-retourjeu} $\ast$}]{retourjeu, }
+\item[{int}]{resultatde, }
+\item[{int}]{positionjoueur}
+\end{DoxyParamCaption}
+)}}\label{jeu_8c_aedc8c2b1001e2680710ac7ef3d73cac8}
+
+
+Transmet les informations au père. 
+
+Quand les informations transmises ont fait le tour, on génère une structure contenant les informations dont le père aura besoin pour modérer. On lui envoie alors dans le pipe des fils vers le père. 
+\begin{DoxyParams}{Paramètres}
+{\em num\-\_\-fils} & Int -\/ Correspond au numéro du fils souhaitant récupérer les informations. \\
+\hline
+{\em pipes} & Tableau des pipes. \\
+\hline
+{\em retourjeu} & Pointeur sur la structure contenant les informations du jeu qui vient d'être fait et ayant fait le tour. \\
+\hline
+{\em resultatde} & Valeur du dé lancé. Utile pour le père afin de savoir si le fils doit rejouer ou non. En cas de double 6. \\
+\hline
+{\em positionjoueur} & Nouvelle position du joueur. Utile pour savoir si un joueur est arrivé au bout de sa course. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Void -\/ Termine en cas d'erreur 
+\end{DoxyReturn}
+\hypertarget{jeu_8c_a0a25bcc79238a489f286585b395ccd17}{\index{jeu.\-c@{jeu.\-c}!je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin@{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin}}
+\index{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin@{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin}!jeu.c@{jeu.\-c}}
+\subsubsection[{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin}]{\setlength{\rightskip}{0pt plus 5cm}void je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-fils, }
+\item[{int $\ast$$\ast$}]{pipes, }
+\item[{{\bf struct\-\_\-pendantjeu} $\ast$}]{pendantjeu}
+\end{DoxyParamCaption}
+)}}\label{jeu_8c_a0a25bcc79238a489f286585b395ccd17}
+
+
+Transmission des informations du jeu d'un joueurs aux autres joueurs. 
+
+La structure contenant les informations du jeu qui vient d'être effectué est déjà crée. Il ne reste qu'a l'écrire dans le pipe du voisin. 
+\begin{DoxyParams}{Paramètres}
+{\em num\-\_\-fils} & Int -\/ Correspond au numéro du fils souhaitant récupérer les informations. \\
+\hline
+{\em pipes} & Tableau des pipes. \\
+\hline
+{\em pendantjeu} & Pointeur sur la structure contenant les informations du jeu qui vient d'être fait. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Void -\/ Termine en cas d'erreur 
+\end{DoxyReturn}
+\hypertarget{jeu_8c_ab99f683f90789787a7d8201407214cc1}{\index{jeu.\-c@{jeu.\-c}!joueur\-\_\-suivant@{joueur\-\_\-suivant}}
+\index{joueur\-\_\-suivant@{joueur\-\_\-suivant}!jeu.c@{jeu.\-c}}
+\subsubsection[{joueur\-\_\-suivant}]{\setlength{\rightskip}{0pt plus 5cm}int joueur\-\_\-suivant (
+\begin{DoxyParamCaption}
+\item[{{\bf struct\-\_\-retourjeu} $\ast$}]{retourjeulu}
+\end{DoxyParamCaption}
+)}}\label{jeu_8c_ab99f683f90789787a7d8201407214cc1}
+
+
+Fonction de verification du bon deroulement de read. 
+
+Verifie que l'operation de lecture dans un pipe s'est bien deroulée. 
+\begin{DoxyParams}{Paramètres}
+{\em result} & Int -\/ Correspond au resultat de la fonction read appellée en parametre. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Void -\/ Termine le programme en cas d'erreur 
+\end{DoxyReturn}
+\hypertarget{jeu_8c_a9b781c5cf503cd1379cd5363baf5518b}{\index{jeu.\-c@{jeu.\-c}!la\-\_\-partie\-\_\-est\-\_\-interrompue@{la\-\_\-partie\-\_\-est\-\_\-interrompue}}
+\index{la\-\_\-partie\-\_\-est\-\_\-interrompue@{la\-\_\-partie\-\_\-est\-\_\-interrompue}!jeu.c@{jeu.\-c}}
+\subsubsection[{la\-\_\-partie\-\_\-est\-\_\-interrompue}]{\setlength{\rightskip}{0pt plus 5cm}int la\-\_\-partie\-\_\-est\-\_\-interrompue (
+\begin{DoxyParamCaption}
+\item[{{\bf struct\-\_\-debuttour} $\ast$}]{debuttourlu}
+\end{DoxyParamCaption}
+)}}\label{jeu_8c_a9b781c5cf503cd1379cd5363baf5518b}
+
+
+Verifie si la partie n'a pas été interrompue. 
+
+Dans le cas ou un joueur a gagné, nous considérons que la partie est finie. Dans le cas ou l'utilisateur choisi d'interrompre le programme cette fonction sera très utile pour permettre aux joueurs de se tuer même si ils n'ont pas fini de jouer. 
+\begin{DoxyParams}{Paramètres}
+{\em debuttourlu} & Pointeur sur la structure lue au debut du tour. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Int -\/ Renvoie 1 si la partie est termine ou interrompue, 0 sinon. 
+\end{DoxyReturn}
+\hypertarget{jeu_8c_a2a267585992923972c7c142df69c5b89}{\index{jeu.\-c@{jeu.\-c}!pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils@{pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils}}
+\index{pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils@{pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils}!jeu.c@{jeu.\-c}}
+\subsubsection[{pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils}]{\setlength{\rightskip}{0pt plus 5cm}void pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils (
+\begin{DoxyParamCaption}
+\item[{int $\ast$$\ast$}]{pipes, }
+\item[{{\bf struct\-\_\-debuttour} $\ast$}]{debuttour, }
+\item[{int}]{numerojoueur, }
+\item[{int}]{partieencours}
+\end{DoxyParamCaption}
+)}}\label{jeu_8c_a2a267585992923972c7c142df69c5b89}
+
+
+Transmet les informations au père. 
+
+Quand les informations transmises ont fait le tour, on génère une structure contenant les informations dont le père aura besoin pour modérer. On lui envoie alors dans le pipe des fils vers le père. 
+\begin{DoxyParams}{Paramètres}
+{\em num\-\_\-fils} & Int -\/ Correspond au numéro du fils souhaitant récupérer les informations. \\
+\hline
+{\em pipes} & Tableau des pipes. \\
+\hline
+{\em retourjeu} & Pointeur sur la structure contenant les informations du jeu qui vient d'être fait et ayant fait le tour. \\
+\hline
+{\em resultatde} & Valeur du dé lancé. Utile pour le père afin de savoir si le fils doit rejouer ou non. En cas de double 6. \\
+\hline
+{\em positionjoueur} & Nouvelle position du joueur. Utile pour savoir si un joueur est arrivé au bout de sa course. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Void -\/ Termine en cas d'erreur 
+\end{DoxyReturn}
+\hypertarget{jeu_8c_a96da99031da1d74f38b559243dad2171}{\index{jeu.\-c@{jeu.\-c}!pere\-\_\-lit\-\_\-retour\-\_\-tour@{pere\-\_\-lit\-\_\-retour\-\_\-tour}}
+\index{pere\-\_\-lit\-\_\-retour\-\_\-tour@{pere\-\_\-lit\-\_\-retour\-\_\-tour}!jeu.c@{jeu.\-c}}
+\subsubsection[{pere\-\_\-lit\-\_\-retour\-\_\-tour}]{\setlength{\rightskip}{0pt plus 5cm}void pere\-\_\-lit\-\_\-retour\-\_\-tour (
+\begin{DoxyParamCaption}
+\item[{int $\ast$$\ast$}]{pipes, }
+\item[{{\bf struct\-\_\-retourjeu} $\ast$}]{retourjeulu}
+\end{DoxyParamCaption}
+)}}\label{jeu_8c_a96da99031da1d74f38b559243dad2171}
+
+
+Fonction de verification du bon deroulement de read. 
+
+Verifie que l'operation de lecture dans un pipe s'est bien deroulée. 
+\begin{DoxyParams}{Paramètres}
+{\em result} & Int -\/ Correspond au resultat de la fonction read appellée en parametre. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Void -\/ Termine le programme en cas d'erreur 
+\end{DoxyReturn}
+\hypertarget{jeu_8c_aad47be4fef9e94264139f82a73b259ae}{\index{jeu.\-c@{jeu.\-c}!premier\-\_\-joueur@{premier\-\_\-joueur}}
+\index{premier\-\_\-joueur@{premier\-\_\-joueur}!jeu.c@{jeu.\-c}}
+\subsubsection[{premier\-\_\-joueur}]{\setlength{\rightskip}{0pt plus 5cm}int premier\-\_\-joueur (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{jeu_8c_aad47be4fef9e94264139f82a73b259ae}
+
+
+Selection par l'utilisateur du premier joueur. 
+
+Demande a l'utilisateur de saisir le numero du premier joueur. \begin{DoxyReturn}{Renvoie}
+Int -\/ Retourne le numero du joueur saisi. 
+\end{DoxyReturn}

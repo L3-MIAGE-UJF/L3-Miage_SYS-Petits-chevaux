@@ -1,0 +1,131 @@
+\hypertarget{pipes_8h}{\section{Référence du fichier src/headers/pipes.h}
+\label{pipes_8h}\index{src/headers/pipes.\-h@{src/headers/pipes.\-h}}
+}
+
+
+Declaration des fonctions relatives au pipes pour le jeu Petits chevaux.  
+
+
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{pipes_8h_a8efe620a19ac0e4f120345e57b6edeac}{creation\-\_\-pipes} (int $\ast$$\ast$pipes)
+\begin{DoxyCompactList}\small\item\em Creation des pipes. \end{DoxyCompactList}\item 
+int \hyperlink{pipes_8h_a4352c1ccc165cf89b0c4d6a748b1dd58}{pipes\-\_\-fils\-\_\-start\-\_\-close} (int num\-\_\-fils, int $\ast$$\ast$pipes)
+\begin{DoxyCompactList}\small\item\em Fermeture des pipes non utilises pour chaque fils. \end{DoxyCompactList}\item 
+int \hyperlink{pipes_8h_a07068e6f96cddd3caeaa6dde747270e7}{pipes\-\_\-fils\-\_\-end\-\_\-close} (int num\-\_\-fils, int $\ast$$\ast$pipes)
+\begin{DoxyCompactList}\small\item\em Fermeture des pipes utilisés pour chaque fils. \end{DoxyCompactList}\item 
+int \hyperlink{pipes_8h_a7e56d9b0553fa826c8087ce2d06d987d}{pipes\-\_\-pere\-\_\-start\-\_\-close} (int $\ast$$\ast$pipes)
+\begin{DoxyCompactList}\small\item\em Fermeture des pipes non utilises pour le pere. \end{DoxyCompactList}\item 
+int \hyperlink{pipes_8h_a66dbda032de023003f32d4f4eec66875}{pipes\-\_\-pere\-\_\-end\-\_\-close} (int $\ast$$\ast$pipes)
+\begin{DoxyCompactList}\small\item\em Fermeture des pipes utilisés pour le père. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Declaration des fonctions relatives au pipes pour le jeu Petits chevaux. \begin{DoxyAuthor}{Auteur}
+A\-O\-U\-N Abel et D\-O\-U\-C\-H\-E\-T Maximilien
+\end{DoxyAuthor}
+Les pipes sont organisés de cette maniere \-: 0 -\/$>$ Entree du main depuis joueurs 1 -\/$>$ sortie du main vers joueur 1 2 -\/$>$ sortie du main vers joueur 2 3 -\/$>$ sortie du main vers joueur 3 4 -\/$>$ sortie du main vers joueur 4 5 -\/$>$ sortie du joueur 1 vers joueur 2 6 -\/$>$ sortie du joueur 2 vers joueur 3 7 -\/$>$ sortie du joueur 3 vers joueur 4 8 -\/$>$ sortie du joueur 4 vers joueur 1 
+
+\subsection{Documentation des fonctions}
+\hypertarget{pipes_8h_a8efe620a19ac0e4f120345e57b6edeac}{\index{pipes.\-h@{pipes.\-h}!creation\-\_\-pipes@{creation\-\_\-pipes}}
+\index{creation\-\_\-pipes@{creation\-\_\-pipes}!pipes.h@{pipes.\-h}}
+\subsubsection[{creation\-\_\-pipes}]{\setlength{\rightskip}{0pt plus 5cm}int creation\-\_\-pipes (
+\begin{DoxyParamCaption}
+\item[{int $\ast$$\ast$}]{pipes}
+\end{DoxyParamCaption}
+)}}\label{pipes_8h_a8efe620a19ac0e4f120345e57b6edeac}
+
+
+Creation des pipes. 
+
+Fonction de creation des pipes 
+\begin{DoxyParams}{Paramètres}
+{\em pipes} & Tableau des pipes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne 0 si tout s'est bien passé 
+\end{DoxyReturn}
+\hypertarget{pipes_8h_a07068e6f96cddd3caeaa6dde747270e7}{\index{pipes.\-h@{pipes.\-h}!pipes\-\_\-fils\-\_\-end\-\_\-close@{pipes\-\_\-fils\-\_\-end\-\_\-close}}
+\index{pipes\-\_\-fils\-\_\-end\-\_\-close@{pipes\-\_\-fils\-\_\-end\-\_\-close}!pipes.h@{pipes.\-h}}
+\subsubsection[{pipes\-\_\-fils\-\_\-end\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}int pipes\-\_\-fils\-\_\-end\-\_\-close (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-fils, }
+\item[{int $\ast$$\ast$}]{pipes}
+\end{DoxyParamCaption}
+)}}\label{pipes_8h_a07068e6f96cddd3caeaa6dde747270e7}
+
+
+Fermeture des pipes utilisés pour chaque fils. 
+
+Ferme les pipes de chaque fils utilisés lorsque qu'il n'en a plus besoin. 
+\begin{DoxyParams}{Paramètres}
+{\em num\-\_\-fils} & Le numéro du fils souhaitant fermer ses pipes \\
+\hline
+{\em pipes} & Le Tableau des pipes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne 0 si tout s'est bien passé 
+\end{DoxyReturn}
+\hypertarget{pipes_8h_a4352c1ccc165cf89b0c4d6a748b1dd58}{\index{pipes.\-h@{pipes.\-h}!pipes\-\_\-fils\-\_\-start\-\_\-close@{pipes\-\_\-fils\-\_\-start\-\_\-close}}
+\index{pipes\-\_\-fils\-\_\-start\-\_\-close@{pipes\-\_\-fils\-\_\-start\-\_\-close}!pipes.h@{pipes.\-h}}
+\subsubsection[{pipes\-\_\-fils\-\_\-start\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}int pipes\-\_\-fils\-\_\-start\-\_\-close (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-fils, }
+\item[{int $\ast$$\ast$}]{pipes}
+\end{DoxyParamCaption}
+)}}\label{pipes_8h_a4352c1ccc165cf89b0c4d6a748b1dd58}
+
+
+Fermeture des pipes non utilises pour chaque fils. 
+
+Ferme les pipes de chaque fils non utilisés. 
+\begin{DoxyParams}{Paramètres}
+{\em num\-\_\-fils} & Le numéro du fils souhaitant fermer ses pipes \\
+\hline
+{\em pipes} & Le Tableau des pipes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne 0 si tout s'est bien passé 
+\end{DoxyReturn}
+\hypertarget{pipes_8h_a66dbda032de023003f32d4f4eec66875}{\index{pipes.\-h@{pipes.\-h}!pipes\-\_\-pere\-\_\-end\-\_\-close@{pipes\-\_\-pere\-\_\-end\-\_\-close}}
+\index{pipes\-\_\-pere\-\_\-end\-\_\-close@{pipes\-\_\-pere\-\_\-end\-\_\-close}!pipes.h@{pipes.\-h}}
+\subsubsection[{pipes\-\_\-pere\-\_\-end\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}int pipes\-\_\-pere\-\_\-end\-\_\-close (
+\begin{DoxyParamCaption}
+\item[{int $\ast$$\ast$}]{pipes}
+\end{DoxyParamCaption}
+)}}\label{pipes_8h_a66dbda032de023003f32d4f4eec66875}
+
+
+Fermeture des pipes utilisés pour le père. 
+
+Ferme les pipes du père utilisés lorsque qu'il n'en a plus besoin. 
+\begin{DoxyParams}{Paramètres}
+{\em pipes} & Le Tableau des pipes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne 0 si tout s'est bien passé 
+\end{DoxyReturn}
+\hypertarget{pipes_8h_a7e56d9b0553fa826c8087ce2d06d987d}{\index{pipes.\-h@{pipes.\-h}!pipes\-\_\-pere\-\_\-start\-\_\-close@{pipes\-\_\-pere\-\_\-start\-\_\-close}}
+\index{pipes\-\_\-pere\-\_\-start\-\_\-close@{pipes\-\_\-pere\-\_\-start\-\_\-close}!pipes.h@{pipes.\-h}}
+\subsubsection[{pipes\-\_\-pere\-\_\-start\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}int pipes\-\_\-pere\-\_\-start\-\_\-close (
+\begin{DoxyParamCaption}
+\item[{int $\ast$$\ast$}]{pipes}
+\end{DoxyParamCaption}
+)}}\label{pipes_8h_a7e56d9b0553fa826c8087ce2d06d987d}
+
+
+Fermeture des pipes non utilises pour le pere. 
+
+Ferme les pipes non utilisés du père. 
+\begin{DoxyParams}{Paramètres}
+{\em pipes} & Le Tableau des pipes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne 0 si tout s'est bien passé 
+\end{DoxyReturn}

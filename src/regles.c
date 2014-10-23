@@ -1,13 +1,32 @@
+/**
+ * \file	regles.c
+ * \author	AOUN Abel et DOUCHET Maximilien
+ * \brief       Fonctions relatives aux regles pour le jeu Petits chevaux.
+ */
+ 
 #include <stdio.h>
-
 #include "headers/jeu.h"
 
-// calcul de la position du cheval selon les regles suivantes
-// de l'ecurie (0) si le dé est à 6 on passe le cheval à la position de départ du joueur correspondant
-
+/**
+ * \brief      Indique au joueur si c'est a son tour de jouer.
+ * \details    Celon la valeur renvoyée le joueur effectuera son tour ou non.
+ * \param    num_fils	Correspond au numéro du fils appelant la fonction.
+ * \param    debuttourlu	Correspond a la structure que le joueur a recu dans le pipe par le père.
+ * \return    Int Renvoie 0 si ce n'est pas au fils de jouer et 1 si c'est son tour.
+ */
+ 
 int cest_mon_tour(int num_fils, struct_debuttour * debuttourlu) {
 	return (debuttourlu->numerojoueur == num_fils) ? 1 : 0;
 }
+
+/**
+ * \brief      Donne une nouvelle position pour un joueur.
+ * \details    Donne une nouvelle position selon la position et le numero de joueur transmis.
+ * \param    num_fils	Correspond au numéro du fils appelant la fonction.
+ * \param    positionjoueur	Correspond a la position du fils appelant la fonction.
+ * \param    resultatde		Correspond a la valeur du lance de des du joueur.
+ * \return    Int Renvoie 0 si ce n'est pas au fils de jouer et 1 si c'est son tour.
+ */
 
 int nouvelle_position(int num_fils, int positionjoueur, int resultatde) {
 	int nouvelle_position=0;
@@ -97,6 +116,13 @@ int nouvelle_position(int num_fils, int positionjoueur, int resultatde) {
 	}
 	return nouvelle_position;
 }
+
+/**
+ * \brief      Indique si le joueur a gagné.
+ * \details    Selon le resultat du jeu d'un fils, cela indique si ce fils a gagné
+ * \param    retourjeulu Structure contenant toutes les informations importantes sur le jeu et le joueur qui vient de jouer.
+ * \return    Int Renvoie 0 si il n'a pas encore gagné et 1 si il est vainqueur.
+ */
 
 int le_joueur_a_gagne(struct_retourjeu * retourjeulu) {
 	int joueuragagne=0;

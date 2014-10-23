@@ -29,3 +29,6 @@ clean:
 mrproper:
 	make clean
 	rm -rf bin/$(EXEC)
+
+doxygen:
+	doxygen doxygen-config

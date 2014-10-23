@@ -1,3 +1,9 @@
+/**
+ * \file	jeu.c
+ * \author	AOUN Abel et DOUCHET Maximilien
+ * \brief       Fonctions relatives au jeu pour le programme Petits Chevaux.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -6,6 +12,12 @@
 #include "headers/dada.h"
 #include "headers/des.h"
 #include "headers/regles.h"
+
+/**
+ * \brief       Selection par l'utilisateur du premier joueur.
+ * \details    Demande a l'utilisateur de saisir le numero du premier joueur.
+ * \return    Int - Retourne le numero du joueur saisi.
+ */
 
 int premier_joueur(void) {
 	char buff[10]={0};
@@ -22,44 +34,97 @@ int premier_joueur(void) {
 	return (int) (buff[0]-'0');
 }
 
+/**
+ * \brief       Recupere les informations pour le prochain tour.
+ * \details    Récupère dans le pipe venant du main vers le joueur concerné la structure contenant les informations pour le prochain tour.
+ * \param    num_fils	Int - Correspond au numéro du fils souhaitant récupérer les informations.
+ * \param    pipes	Tableau des pipes.
+ * \param    debuttourlu	Pointeur sur la structure.
+ * \return    Void
+ */
+
 void cest_a_qui_de_jouer(int num_fils, int ** pipes, struct_debuttour * debuttourlu) {
 	checkR(read(pipes[num_fils][0], debuttourlu, sizeof(struct_debuttour)));
 }
+
+/**
+ * \brief       Verifie si la partie n'a pas été interrompue.
+ * \details    Dans le cas ou un joueur a gagné, nous considérons que la partie est finie. 
+ * Dans le cas ou l'utilisateur choisi d'interrompre le programme cette fonction sera très utile pour permettre aux joueurs de se tuer même si ils n'ont pas fini de jouer.
+ * \param    debuttourlu	Pointeur sur la structure lue au debut du tour.
+ * \return    Int - Renvoie 1 si la partie est termine ou interrompue, 0 sinon.
+ */
 
 int la_partie_est_interrompue(struct_debuttour * debuttourlu) {
 	return (debuttourlu->partieencours) ? 0 : 1;
 }
 
+/**
+ * \brief       Action effectuées par le joueur lorsque que vient son tour.
+ * \details    Le joueur lance un dé, demande aux reglès quelle est sa nouvelle position et enregistre ces informations.
+ * \param    num_fils	Int - Correspond au numéro du fils souhaitant récupérer les informations.
+ * \param    positionjoueur	Pointeur sur la position du joueur appelant la fonction.
+ * \param    pendantjeu		Pointeur sur la structure qui va être transmise aux autres joueurs.
+ * \return    Int - Retourne le resultat du lancé de dé, la position est déjà modifiée.
+ */
+
 int je_joue(int num_fils, int * positionjoueur, struct_pendantjeu * pendantjeu) {
 	int resultatde = lancer_des();
-	printf("\n je joue numfils: %d posiion:%d \n",num_fils, *positionjoueur);
+
 	*positionjoueur = nouvelle_position(num_fils, *positionjoueur, resultatde);
 	
 	pendantjeu->numerojoueur = num_fils;
 	pendantjeu->positionjoueur = *positionjoueur; 
-//	printf("fils %d a lance les des : %d, il a np : %d \n",num_fils, resultatde, pendantjeu->positionjoueur);
+
 	return resultatde;
 }
-	
+
+/**
+ * \brief       Transmission des informations du jeu d'un joueurs aux autres joueurs.
+ * \details    La structure contenant les informations du jeu qui vient d'être effectué est déjà crée.
+ * Il ne reste qu'a l'écrire dans le pipe du voisin.
+ * \param    num_fils	Int - Correspond au numéro du fils souhaitant récupérer les informations.
+ * \param    pipes	Tableau des pipes.
+ * \param    pendantjeu 	Pointeur sur la structure contenant les informations du jeu qui vient d'être fait.
+ * \return    Void - Termine en cas d'erreur
+ */
+
 void je_transmet_mon_resultat_au_voisin(int num_fils, int ** pipes, struct_pendantjeu * pendantjeu) {
 	// on écrit dans le pipe du joueur suivant
 	checkW(write(pipes[num_fils+4][1], pendantjeu, sizeof(struct_pendantjeu)));
 }
 
+/**
+ * \brief       Attente après envoie des informations du retour de ces informations.
+ * \details    Permet la récupération des informations envoyés par le biais du joueur précédent. Ce en lisant dans le pipe du joueur précédent le num_fils.
+ * Quand l'information sera revenue, elle aura fait le tour.
+ * \param    num_fils	Int - Correspond au numéro du fils souhaitant récupérer les informations.
+ * \param    pipes	Tableau des pipes.
+ * \param    pendantjeulu 	Pointeur sur la structure contenant les informations du jeu qui vient d'être fait et transmis par le voisin précédent.
+ * \return    Void - Termine en cas d'erreur
+ */
+
 void jattend_que_linfo_fasse_le_tour(int num_fils, int ** pipes, struct_pendantjeu * pendantjeulu) {
 	//passe en mode lecture dans le pipe du precedent puis renvoie au pere quand il relit la valeur qu'il a envoyé
 	if(num_fils==1){
 		checkR(read(pipes[8][0], pendantjeulu, sizeof(struct_pendantjeu)));
-		//printf("fils %d lit dans pipe %d\n", num_fils, 8);
 	}
 	else{
-		//printf("fils %d lit dans pipe %d\n", num_fils, num_fils+3);
 		checkR(read(pipes[num_fils+3][0], pendantjeulu, sizeof(struct_pendantjeu)));
 	}
-
-//	printf("Tour d'info fini , fils %d a relu %d la val %d\n", num_fils, pendantjeulu->numerojoueur, pendantjeulu->positionjoueur);
 }
 
+/**
+ * \brief       Fait passer les informations au suivant.
+ * \details    Permet la transmission des informations envoyés par le biais du joueur précédent. Ce en lisant dans le pipe du joueur précédent le num_fils.
+ * On l'envoie au suivant immédiatement. Cela nous permet d'appliquer la regle pour que le joueur revienne au point de départ si un autre joueur est arrivé sur la même case.
+ * Cette fonction est appellée lorsque ce n'est pas à num_fils de jouer.
+ * \param    num_fils	Int - Correspond au numéro du fils souhaitant récupérer les informations.
+ * \param    pipes	Tableau des pipes.
+ * \param    pendantjeulu 	Pointeur sur la structure contenant les informations du jeu qui vient d'être transmis par le voisin précédent.
+ * \return    Void - Termine en cas d'erreur
+ */
+ 
 void je_fais_passer_le_message(int num_fils, int ** pipes, struct_pendantjeu * pendantjeulu) {
 	
 	//printf("fils %d en attente \n", num_fils);
@@ -77,6 +142,18 @@ void je_fais_passer_le_message(int num_fils, int ** pipes, struct_pendantjeu * p
 	checkW(write(pipes[num_fils+4][1], pendantjeulu, sizeof(struct_pendantjeu)));
 }
 
+/**
+ * \brief       Transmet les informations au père.
+ * \details    Quand les informations transmises ont fait le tour, on génère une structure contenant les informations dont le père aura besoin pour modérer.
+ * On lui envoie alors dans le pipe des fils vers le père.
+ * \param    num_fils	Int - Correspond au numéro du fils souhaitant récupérer les informations.
+ * \param    pipes	Tableau des pipes.
+ * \param    retourjeu 	Pointeur sur la structure contenant les informations du jeu qui vient d'être fait et ayant fait le tour.
+ * \param    resultatde 	Valeur du dé lancé. Utile pour le père afin de savoir si le fils doit rejouer ou non. En cas de double 6.
+ * \param    positionjoueur 	Nouvelle position du joueur. Utile pour savoir si un joueur est arrivé au bout de sa course. 
+ * \return    Void - Termine en cas d'erreur
+ */
+ 
 void je_transmet_mon_resultat_au_pere(int num_fils, int ** pipes, struct_retourjeu * retourjeu, int resultatde, int positionjoueur) {
 
 	retourjeu->numerojoueur=num_fils;
@@ -85,6 +162,18 @@ void je_transmet_mon_resultat_au_pere(int num_fils, int ** pipes, struct_retourj
 	
 	checkW(write(pipes[0][1], retourjeu, sizeof(struct_retourjeu)));
 }
+
+/**
+ * \brief       Transmet les informations au père.
+ * \details    Quand les informations transmises ont fait le tour, on génère une structure contenant les informations dont le père aura besoin pour modérer.
+ * On lui envoie alors dans le pipe des fils vers le père.
+ * \param    num_fils	Int - Correspond au numéro du fils souhaitant récupérer les informations.
+ * \param    pipes	Tableau des pipes.
+ * \param    retourjeu 	Pointeur sur la structure contenant les informations du jeu qui vient d'être fait et ayant fait le tour.
+ * \param    resultatde 	Valeur du dé lancé. Utile pour le père afin de savoir si le fils doit rejouer ou non. En cas de double 6.
+ * \param    positionjoueur 	Nouvelle position du joueur. Utile pour savoir si un joueur est arrivé au bout de sa course. 
+ * \return    Void - Termine en cas d'erreur
+ */
 
 void pere_envoyer_message_aux_fils(int ** pipes, struct_debuttour * debuttour, int numerojoueur, int partieencours) {
 	int indice;
@@ -95,12 +184,26 @@ void pere_envoyer_message_aux_fils(int ** pipes, struct_debuttour * debuttour, i
 		checkW(write(pipes[indice][1], debuttour, sizeof(struct_debuttour)));
 	}
 }
+
+/**
+ * \brief       Fonction de verification du bon deroulement de read.
+ * \details    Verifie que l'operation de lecture dans un pipe s'est bien deroulée.
+ * \param    result	Int - Correspond au resultat de la fonction read appellée en parametre.
+ * \return    Void - Termine le programme en cas d'erreur
+ */
 	
 void pere_lit_retour_tour(int ** pipes, struct_retourjeu * retourjeulu) {
 	checkR(read(pipes[0][0], retourjeulu, sizeof(struct_retourjeu)));
 	
 	printf("\nretour tour lu : num fils %d, de : %d, newpositionjoueur : %d\n", retourjeulu->numerojoueur, retourjeulu->resultatde, retourjeulu->positionjoueur);
 }
+
+/**
+ * \brief       Fonction de verification du bon deroulement de read.
+ * \details    Verifie que l'operation de lecture dans un pipe s'est bien deroulée.
+ * \param    result	Int - Correspond au resultat de la fonction read appellée en parametre.
+ * \return    Void - Termine le programme en cas d'erreur
+ */
 
 int joueur_suivant(struct_retourjeu * retourjeulu) {
 	if (retourjeulu->resultatde==6) {
@@ -110,39 +213,3 @@ int joueur_suivant(struct_retourjeu * retourjeulu) {
 		return (retourjeulu->numerojoueur==4) ? 1 : retourjeulu->numerojoueur+1;
 	}
 }
-				
- /**
- * \brief      Couleur possible pour un Point.
- * \details   La table de correspondance de couleurs est disponible en modification par les accesseurs.
- */
-
-/**
- * \brief       Creer le plateau et l'initialise a 0
- * \details
- * \return    le pointeur \a sur le tableau cree
- */
-
-
-/**
- * Structure transitant du programme principal vers les joueurs. Elle informe les joueurs du prochain qui doit jouer.
- */
- 
-
-
-/**
- * Structure transitant des joueurs vers le programme principal. Elle informe le programme principal du résultat du de, de la nouvelle position du joueur.
- */
-
-
-
-/**
- * Structure transitant des joueurs vers les joueurs. Elle informe les autres joueurs de la nouvelle position du joueur
- */
-
-
-//typedef enum
-//{
-//   COLOR_BLUE,               /*!< Couleur bleu (0,0,255)               */
-//   COLOR_DARK_RED,      /*!< Couleur rouge sombre (64,0,0)  */
-//   COLOR_OLIVE              /*!< Couleur olive (51,51,0)               */
-//}
