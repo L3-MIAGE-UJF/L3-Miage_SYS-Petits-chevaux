@@ -29,10 +29,12 @@ int la_partie_est_interrompue(struct_debuttour * debuttourlu) {
 	return (debuttourlu->partieencours) ? 0 : 1;
 }
 
-void je_joue(int num_fils, struct_pendantjeu * pendantjeu) {
+int je_joue(int num_fils, struct_pendantjeu * pendantjeu) {
+	int resultatde = lancer_des();
 	pendantjeu->numerojoueur = num_fils;
-	pendantjeu->positionjoueur = lancer_des(); 
+	pendantjeu->positionjoueur = resultatde; 
 	printf("fils %d a lance les des : %d \n",num_fils, pendantjeu->positionjoueur);
+	return resultatde;
 }
 	
 void je_transmet_mon_resultat_au_voisin(int num_fils, int ** pipes, struct_pendantjeu * pendantjeu) {
@@ -70,6 +72,21 @@ void je_fais_passer_le_message(int num_fils, int ** pipes, struct_pendantjeu * p
 	checkW(write(pipes[num_fils+4][1], pendantjeulu, sizeof(struct_pendantjeu)));
 }
 
+void je_transmet_mon_resultat_au_pere(int num_fils, int ** pipes, struct_retourjeu * retourjeu, int resultatde, int positionjoueur) {
+
+	retourjeu->numerojoueur=num_fils;
+	retourjeu->resultatde=resultatde;
+	retourjeu->positionjoueur=positionjoueur;
+	
+	checkW(write(pipes[0][1], retourjeu, sizeof(struct_retourjeu)));
+}
+
+void pere_lit_retour_tour(int ** pipes, struct_retourjeu * retourjeulu) {
+	checkR(read(pipes[0][0], retourjeulu, sizeof(struct_retourjeu)));
+	
+	printf("\nretour tour lu : num fils %d, de : %d, positionjoueur : %d\n", retourjeulu->numerojoueur, retourjeulu->resultatde, retourjeulu->positionjoueur);
+}
+						
  /**
  * \brief      Couleur possible pour un Point.
  * \details   La table de correspondance de couleurs est disponible en modification par les accesseurs.

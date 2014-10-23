@@ -86,7 +86,9 @@ int main(int argc, char *argv[]) {
 	 */
 
 
-	int position_j;
+	int positionjoueur;
+	
+	int resultatde;
 	
 	struct_retourjeu retourjeu;
 	struct_retourjeu * retourjeulu;
@@ -144,9 +146,9 @@ int main(int argc, char *argv[]) {
 				 * Instanciation et initialisation de variables propres au fils num_fils.
 				 */
 
-				// position_j correspond a la position du joueur , ils sont tous dans l'ecurie au départ soit 0
-				position_j=0;
-
+				// positionjoueur correspond a la position du joueur , ils sont tous dans l'ecurie au départ soit 0
+				positionjoueur=0;
+				
 				/* Allocation d'une zone memoire pour les structures allant être lu pendant le jeu et a chaque debut de tour */               
 				debuttourlu=(struct_debuttour *) malloc(sizeof(struct_debuttour));
 				pendantjeulu=(struct_pendantjeu *) malloc(sizeof(struct_pendantjeu));
@@ -165,12 +167,13 @@ int main(int argc, char *argv[]) {
 					lancer_des(); // ? sinon alea donne memes valeurs
 
 					if (cest_mon_tour(num_fils, debuttourlu)) {
-						je_joue(num_fils, &pendantjeu);
+						resultatde=je_joue(num_fils, &pendantjeu);
 
 						je_transmet_mon_resultat_au_voisin(num_fils, pipes, &pendantjeu);
 						
 						jattend_que_linfo_fasse_le_tour (num_fils, pipes, pendantjeulu);
 						
+						je_transmet_mon_resultat_au_pere(num_fils, pipes, &retourjeu, resultatde, positionjoueur);
 					}
 					else {
 						je_fais_passer_le_message(num_fils, pipes, pendantjeulu);
@@ -206,6 +209,8 @@ int main(int argc, char *argv[]) {
 	 * Suite du programme principal
 	 */
 
+	retourjeulu=(struct_debuttour *) malloc(sizeof(struct_retourjeu));
+
 	fflush(stdout);
 	fprintf(stdout, "\nTous les fils sont créés. Début du programme.\n\n");
 
@@ -231,6 +236,8 @@ int main(int argc, char *argv[]) {
 	for(indice=1;indice<=4;indice++) {
 		checkW(write(pipes[indice][1], &debuttour, sizeof(struct_debuttour)));
 	}
+
+	pere_lit_retour_tour(pipes, retourjeulu);
 
 	debuttour.partieencours=0;
 	for(indice=1;indice<=4;indice++) {
