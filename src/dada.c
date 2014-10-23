@@ -19,6 +19,7 @@
 
 #include "headers/des.h"
 #include "headers/jeu.h"
+#include "headers/regles.h"
 #include "headers/pipes.h"
 
 
@@ -58,6 +59,7 @@ int main(int argc, char *argv[]) {
 	int indice;
 	int **pipes;
 
+	// faire schema ?
 	pipes=(int **) malloc(sizeof(int * ) * 9);	
 	
 	for (indice=0;indice<9;indice++) {
@@ -85,7 +87,9 @@ int main(int argc, char *argv[]) {
 	 */
 
 
-	int position_j;
+	int positionjoueur;
+	
+	int resultatde;
 	
 	struct_retourjeu retourjeu;
 	struct_retourjeu * retourjeulu;
@@ -143,9 +147,9 @@ int main(int argc, char *argv[]) {
 				 * Instanciation et initialisation de variables propres au fils num_fils.
 				 */
 
-				// position_j correspond a la position du joueur , ils sont tous dans l'ecurie au départ soit 0
-				position_j=0;
-
+				// positionjoueur correspond a la position du joueur , ils sont tous dans l'ecurie au départ soit 0
+				positionjoueur=0;
+				
 				/* Allocation d'une zone memoire pour les structures allant être lu pendant le jeu et a chaque debut de tour */               
 				debuttourlu=(struct_debuttour *) malloc(sizeof(struct_debuttour));
 				pendantjeulu=(struct_pendantjeu *) malloc(sizeof(struct_pendantjeu));
@@ -155,53 +159,32 @@ int main(int argc, char *argv[]) {
 				 */
 							
 				// Tant que le jeu n'est pas fini on regarde si c'est au fils de jouer
-				checkR(read(pipes[num_fils][0], debuttourlu, sizeof(struct_debuttour)));
-				
-				int resultatdes;
-				while(debuttourlu->partieencours==1){
+				cest_a_qui_de_jouer(num_fils, pipes, debuttourlu);
 
-					sleep(1);
+				
+				while(!la_partie_est_interrompue(debuttourlu)){
+
+// essayer de supprimer ce code en gardant l'alea
+					usleep(100000);
 					lancer_des(); // ? sinon alea donne memes valeurs
+//
 
 					if (cest_mon_tour(num_fils, debuttourlu)) {
-//						je_joue(num_fils);
-						pendantjeu.numerojoueur = num_fils;
-						pendantjeu.positionjoueur = lancer_des(); 
-						printf("fils %d a lance les des : %d \n",num_fils, pendantjeu.positionjoueur);
-						// on écrit dans le pipe du joueur suivant
+
+						resultatde=je_joue(num_fils, &positionjoueur, &pendantjeu);
+
+						je_transmet_mon_resultat_au_voisin(num_fils, pipes, &pendantjeu);
+
+						jattend_que_linfo_fasse_le_tour (num_fils, pipes, pendantjeulu);
 						
-						checkW(write(pipes[num_fils+4][1], &pendantjeu, sizeof(struct_pendantjeu)));
-						
-						//passe en mode lecture dans le pipe du precedent puis renvoie au pere quand il relit la valeur qu'il a envoyé
-						if(num_fils==1){
-							checkR(read(pipes[8][0], pendantjeulu,sizeof(struct_pendantjeu)));
-							//printf("fils %d lit dans pipe %d\n", num_fils, 8);
-						}
-						else{
-							//printf("fils %d lit dans pipe %d\n", num_fils, num_fils+3);
-							checkR(read(pipes[num_fils+3][0], pendantjeulu, sizeof(struct_pendantjeu)));
-						}
-						
-						printf("Tour d'info fini , fils %d a relu %d la val %d\n", num_fils, pendantjeulu->numerojoueur, pendantjeulu->positionjoueur);
+						je_transmet_mon_resultat_au_pere(num_fils, pipes, &retourjeu, resultatde, positionjoueur);
 					}
 					else {
-//						je_fais_passer_le_message();
-						//printf("fils %d en attente \n", num_fils);
-						//lit valeur du joueur precedent et renvoie vers le suivant
-						if(num_fils==1){
-							checkR(read(pipes[8][0], pendantjeulu,sizeof(struct_pendantjeu)));
-						}
-						else{
-							checkR(read(pipes[num_fils+3][0], pendantjeulu, sizeof(struct_pendantjeu)));
-						}
-						printf("fils %d fait transiter info %d\n", num_fils, pendantjeulu->positionjoueur);
-						//on renvoie au suivant
-						checkW(write(pipes[num_fils+4][1], pendantjeulu, sizeof(struct_pendantjeu)));		
+						je_fais_passer_le_message(num_fils, pipes, pendantjeulu);
+						//mode je lit et regarde si je doit reculer
 					}
-
 					
-					checkR(read(pipes[num_fils][0], debuttourlu, sizeof(struct_debuttour)));				
-							
+					cest_a_qui_de_jouer(num_fils, pipes, debuttourlu);						
 				}
 
 				/**
@@ -231,6 +214,8 @@ int main(int argc, char *argv[]) {
 	 * Suite du programme principal
 	 */
 
+	retourjeulu=(struct_retourjeu *) malloc(sizeof(struct_retourjeu));
+
 	fflush(stdout);
 	fprintf(stdout, "\nTous les fils sont créés. Début du programme.\n\n");
 
@@ -249,18 +234,14 @@ int main(int argc, char *argv[]) {
 
 	//On ecrit cette structure dans le tube de chaque fils
 
-	debuttour.numerojoueur=premier_joueur();
-	
-	debuttour.partieencours=1;
-	
-	for(indice=1;indice<=4;indice++) {
-		checkW(write(pipes[indice][1], &debuttour, sizeof(struct_debuttour)));
-	}
+	pere_envoyer_message_aux_fils(pipes, &debuttour, premier_joueur(), 1);
 
-	debuttour.partieencours=0;
-	for(indice=1;indice<=4;indice++) {
-		checkW(write(pipes[indice][1], &debuttour, sizeof(struct_debuttour)));
-	}
+	do {
+		pere_lit_retour_tour(pipes, retourjeulu);
+		pere_envoyer_message_aux_fils(pipes, &debuttour, joueur_suivant(retourjeulu), 1);
+	} while (!le_joueur_a_gagne(retourjeulu));
+
+	pere_envoyer_message_aux_fils(pipes, &debuttour, 0, 0);
 	
 	/**
 	 * Fermetures des pipes restants

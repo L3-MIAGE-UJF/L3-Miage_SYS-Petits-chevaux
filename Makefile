@@ -20,7 +20,7 @@ regles.o: src/regles.c src/headers/regles.h src/headers/jeu.h
 pipes.o: src/pipes.c src/headers/pipes.h
 	$(CC) $(CFLAGS) $(LIBS) -c src/pipes.c
 		
-jeu.o: src/jeu.c src/headers/des.h src/headers/regles.h src/headers/jeu.h
+jeu.o: src/jeu.c src/headers/des.h src/headers/regles.h src/headers/jeu.h src/header/dada.h
 	$(CC) $(CFLAGS) $(LIBS) -c src/jeu.c
 	
 clean:
