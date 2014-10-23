@@ -194,7 +194,7 @@ void pere_envoyer_message_aux_fils(int ** pipes, struct_debuttour * debuttour, i
 void pere_lit_retour_tour(int ** pipes, struct_retourjeu * retourjeulu) {
 	checkR(read(pipes[0][0], retourjeulu, sizeof(struct_retourjeu)));
 	
-	printf("\nretour tour lu : num fils %d, de : %d, newpositionjoueur : %d\n", retourjeulu->numerojoueur, retourjeulu->resultatde, retourjeulu->positionjoueur);
+	printf("\nTour effectué > le fils %d à joué un dé (%d), il arrive en position : %d\n", retourjeulu->numerojoueur, retourjeulu->resultatde, retourjeulu->positionjoueur);
 }
 
 /**

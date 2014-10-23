@@ -180,10 +180,13 @@ int main(int argc, char *argv[]) {
 				
 				while(!la_partie_est_interrompue(debuttourlu)){
 
-// essayer de supprimer ce code en gardant l'alea
-					usleep(100000);
-					lancer_des(); // ? sinon alea donne memes valeurs
-//
+					/*
+					 * Cette partie n'est absolument pas indispensable a défaut d'avoir une géneration complexe de nombre aléatoire.
+					 * Elle permet simplemet d'ajouter un petit facteur permetant d'éloigner les valeurs des lancés de dés entre eux.
+					 */
+					usleep(10);
+					lancer_des();
+					usleep(10);
 
 					if (cest_mon_tour(num_fils, debuttourlu)) {
 
@@ -256,6 +259,10 @@ int main(int argc, char *argv[]) {
 		pere_lit_retour_tour(pipes, retourjeulu);
 		pere_envoyer_message_aux_fils(pipes, &debuttour, joueur_suivant(retourjeulu), 1);
 	} while (!le_joueur_a_gagne(retourjeulu));
+	
+	fprintf(stdout, "\n_____________________________________\n");
+	fprintf(stdout, "\nLa partie est finie ! Le joueur %d avec le pid %d à gagné !\n", retourjeulu->numerojoueur, pidfils[retourjeulu->numerojoueur]);
+	fprintf(stdout, "\n_____________________________________\n");
 
 	pere_envoyer_message_aux_fils(pipes, &debuttour, 0, 0);
 	
