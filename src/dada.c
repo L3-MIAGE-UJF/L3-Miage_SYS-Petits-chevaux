@@ -165,7 +165,7 @@ int main(int argc, char *argv[]) {
 				while(!la_partie_est_interrompue(debuttourlu)){
 
 // essayer de supprimer ce code en gardant l'alea
-					sleep(1);
+					usleep(100000);
 					lancer_des(); // ? sinon alea donne memes valeurs
 //
 

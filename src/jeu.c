@@ -32,7 +32,7 @@ int la_partie_est_interrompue(struct_debuttour * debuttourlu) {
 
 int je_joue(int num_fils, int * positionjoueur, struct_pendantjeu * pendantjeu) {
 	int resultatde = lancer_des();
-	
+	printf("\n je joue numfils: %d posiion:%d \n",num_fils, *positionjoueur);
 	*positionjoueur = nouvelle_position(num_fils, *positionjoueur, resultatde);
 	
 	pendantjeu->numerojoueur = num_fils;
