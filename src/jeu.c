@@ -30,10 +30,10 @@ int la_partie_est_interrompue(struct_debuttour * debuttourlu) {
 	return (debuttourlu->partieencours) ? 0 : 1;
 }
 
-int je_joue(int num_fils, int * positionjoueur, struct_pendantjeu * pendantjeu) {
+int je_joue(int num_fils, int * positionjoueur, struct_pendantjeu * pendantjeu, int *danslescalier) {
 	int resultatde = lancer_des();
 	printf("\n je joue numfils: %d posiion:%d \n",num_fils, *positionjoueur);
-	*positionjoueur = nouvelle_position(num_fils, *positionjoueur, resultatde);
+	*positionjoueur = nouvelle_position(num_fils, *positionjoueur, resultatde, danslescalier);
 	
 	pendantjeu->numerojoueur = num_fils;
 	pendantjeu->positionjoueur = *positionjoueur; 
@@ -66,7 +66,7 @@ void je_fais_passer_le_message(int num_fils, int ** pipes, struct_pendantjeu * p
 	//lit valeur du joueur precedent et renvoie vers le suivant
 	
 	if(num_fils==1){
-		checkR(read(pipes[8][0], pendantjeulu,sizeof(struct_pendantjeu)));
+		checkR(read(pipes[8][0], pendantjeulu, sizeof(struct_pendantjeu)));
 	}
 	else{
 		checkR(read(pipes[num_fils+3][0], pendantjeulu, sizeof(struct_pendantjeu)));
