@@ -9,6 +9,41 @@ int cest_mon_tour(int num_fils, struct_debuttour * debuttourlu) {
 	return (debuttourlu->numerojoueur == num_fils) ? 1 : 0;
 }
 
+int nouvelle_position(int num_fils, int positionjoueur, int resultatde) {
+	int nouvelle_position;
+
+	// Ajouter toutes les regles de deplacement
+	
+	//nouvelle position du joueur, limité a sa case limite (bridage)
+	
+	nouvelle_position = positionjoueur + resultatde;
+	return nouvelle_position;
+}
+
+int le_joueur_a_gagne(struct_retourjeu * retourjeulu) {
+	int joueuragagne=0;
+	
+	switch (retourjeulu->numerojoueur) {
+			case 1:
+//				if (retourjeulu->positionjoueur==
+			break;
+			
+			case 2:
+				newp = 15;
+			break;
+			
+			case 3:
+				newp = 29;
+			break;
+			
+			case 4:
+				newp = 43;
+			break;
+	}
+	
+	return joueuragagne;
+}
+
 int nouvellePosition (int numJ, int position, int valeurDes){
 	int newp;
 	if (position==0 && valeurDes == 6){

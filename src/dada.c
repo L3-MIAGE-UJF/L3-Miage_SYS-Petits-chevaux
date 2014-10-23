@@ -59,6 +59,7 @@ int main(int argc, char *argv[]) {
 	int indice;
 	int **pipes;
 
+	// faire schema ?
 	pipes=(int **) malloc(sizeof(int * ) * 9);	
 	
 	for (indice=0;indice<9;indice++) {
@@ -163,20 +164,24 @@ int main(int argc, char *argv[]) {
 				
 				while(!la_partie_est_interrompue(debuttourlu)){
 
+// essayer de supprimer ce code en gardant l'alea
 					sleep(1);
 					lancer_des(); // ? sinon alea donne memes valeurs
+//
 
 					if (cest_mon_tour(num_fils, debuttourlu)) {
-						resultatde=je_joue(num_fils, &pendantjeu);
+
+						resultatde=je_joue(num_fils, &positionjoueur, &pendantjeu);
 
 						je_transmet_mon_resultat_au_voisin(num_fils, pipes, &pendantjeu);
-						
+
 						jattend_que_linfo_fasse_le_tour (num_fils, pipes, pendantjeulu);
 						
 						je_transmet_mon_resultat_au_pere(num_fils, pipes, &retourjeu, resultatde, positionjoueur);
 					}
 					else {
 						je_fais_passer_le_message(num_fils, pipes, pendantjeulu);
+						//mode je lit et regarde si je doit reculer
 					}
 					
 					cest_a_qui_de_jouer(num_fils, pipes, debuttourlu);						
@@ -209,7 +214,7 @@ int main(int argc, char *argv[]) {
 	 * Suite du programme principal
 	 */
 
-	retourjeulu=(struct_debuttour *) malloc(sizeof(struct_retourjeu));
+	retourjeulu=(struct_retourjeu *) malloc(sizeof(struct_retourjeu));
 
 	fflush(stdout);
 	fprintf(stdout, "\nTous les fils sont créés. Début du programme.\n\n");
@@ -229,20 +234,14 @@ int main(int argc, char *argv[]) {
 
 	//On ecrit cette structure dans le tube de chaque fils
 
-	debuttour.numerojoueur=premier_joueur();
-	
-	debuttour.partieencours=1;
-	
-	for(indice=1;indice<=4;indice++) {
-		checkW(write(pipes[indice][1], &debuttour, sizeof(struct_debuttour)));
-	}
+	pere_envoyer_message_aux_fils(pipes, &debuttour, premier_joueur(), 1);
 
-	pere_lit_retour_tour(pipes, retourjeulu);
+	do {
+		pere_lit_retour_tour(pipes, retourjeulu);
+		pere_envoyer_message_aux_fils(pipes, &debuttour, joueur_suivant(retourjeulu), 1);
+	} while (!le_joueur_a_gagne(retourjeulu));
 
-	debuttour.partieencours=0;
-	for(indice=1;indice<=4;indice++) {
-		checkW(write(pipes[indice][1], &debuttour, sizeof(struct_debuttour)));
-	}
+	pere_envoyer_message_aux_fils(pipes, &debuttour, 0, 0);
 	
 	/**
 	 * Fermetures des pipes restants
