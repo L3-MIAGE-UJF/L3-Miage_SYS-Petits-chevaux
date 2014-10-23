@@ -118,11 +118,11 @@ Fonctions</h2></td></tr>
 <tr class="memitem:aedc8c2b1001e2680710ac7ef3d73cac8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu_8c.html#aedc8c2b1001e2680710ac7ef3d73cac8">je_transmet_mon_resultat_au_pere</a> (int num_fils, int **pipes, <a class="el" href="structstruct__retourjeu.html">struct_retourjeu</a> *retourjeu, int resultatde, int positionjoueur)</td></tr>
 <tr class="memdesc:aedc8c2b1001e2680710ac7ef3d73cac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmet les informations au père.  <a href="#aedc8c2b1001e2680710ac7ef3d73cac8"></a><br/></td></tr>
 <tr class="memitem:a2a267585992923972c7c142df69c5b89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu_8c.html#a2a267585992923972c7c142df69c5b89">pere_envoyer_message_aux_fils</a> (int **pipes, <a class="el" href="structstruct__debuttour.html">struct_debuttour</a> *debuttour, int numerojoueur, int partieencours)</td></tr>
-<tr class="memdesc:a2a267585992923972c7c142df69c5b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmet les informations au père.  <a href="#a2a267585992923972c7c142df69c5b89"></a><br/></td></tr>
+<tr class="memdesc:a2a267585992923972c7c142df69c5b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmet les informations du père vers les fils.  <a href="#a2a267585992923972c7c142df69c5b89"></a><br/></td></tr>
 <tr class="memitem:a96da99031da1d74f38b559243dad2171"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu_8c.html#a96da99031da1d74f38b559243dad2171">pere_lit_retour_tour</a> (int **pipes, <a class="el" href="structstruct__retourjeu.html">struct_retourjeu</a> *retourjeulu)</td></tr>
-<tr class="memdesc:a96da99031da1d74f38b559243dad2171"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de verification du bon deroulement de read.  <a href="#a96da99031da1d74f38b559243dad2171"></a><br/></td></tr>
+<tr class="memdesc:a96da99031da1d74f38b559243dad2171"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture des informations transmises par les fils.  <a href="#a96da99031da1d74f38b559243dad2171"></a><br/></td></tr>
 <tr class="memitem:ab99f683f90789787a7d8201407214cc1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu_8c.html#ab99f683f90789787a7d8201407214cc1">joueur_suivant</a> (<a class="el" href="structstruct__retourjeu.html">struct_retourjeu</a> *retourjeulu)</td></tr>
-<tr class="memdesc:ab99f683f90789787a7d8201407214cc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de verification du bon deroulement de read.  <a href="#ab99f683f90789787a7d8201407214cc1"></a><br/></td></tr>
+<tr class="memdesc:ab99f683f90789787a7d8201407214cc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique le prochain joueur devant jouer.  <a href="#ab99f683f90789787a7d8201407214cc1"></a><br/></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><p>Fonctions relatives au jeu pour le programme Petits Chevaux. </p>
@@ -420,15 +420,15 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Fonction de verification du bon deroulement de read. </p>
-<p>Verifie que l'operation de lecture dans un pipe s'est bien deroulée. </p>
+<p>Indique le prochain joueur devant jouer. </p>
+<p>Selon le retour des informations renvoyées au père après un tour de jeu. Le père décide si il fait rejouer un joueur (en cas de double 6), ou si il donne la main au suivant. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">result</td><td>Int - Correspond au resultat de la fonction read appellée en parametre. </td></tr>
+    <tr><td class="paramname">retourjeulu</td><td>Pointeur sur la structure devant contenir les informations destinées au père par le joueurs. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Void - Termine le programme en cas d'erreur </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>result Int - Le numéro du prochain joueur devant s'executer. </dd></dl>
 
 </div>
 </div>
@@ -494,15 +494,14 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Transmet les informations au père. </p>
-<p>Quand les informations transmises ont fait le tour, on génère une structure contenant les informations dont le père aura besoin pour modérer. On lui envoie alors dans le pipe des fils vers le père. </p>
+<p>Transmet les informations du père vers les fils. </p>
+<p>Quand les informations transmises au père ont été analysé, ou lors du premier tour le père doit envoyer des informations au fils. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">num_fils</td><td>Int - Correspond au numéro du fils souhaitant récupérer les informations. </td></tr>
     <tr><td class="paramname">pipes</td><td>Tableau des pipes. </td></tr>
-    <tr><td class="paramname">retourjeu</td><td>Pointeur sur la structure contenant les informations du jeu qui vient d'être fait et ayant fait le tour. </td></tr>
-    <tr><td class="paramname">resultatde</td><td>Valeur du dé lancé. Utile pour le père afin de savoir si le fils doit rejouer ou non. En cas de double 6. </td></tr>
-    <tr><td class="paramname">positionjoueur</td><td>Nouvelle position du joueur. Utile pour savoir si un joueur est arrivé au bout de sa course. </td></tr>
+    <tr><td class="paramname">debuttour</td><td>Pointeur sur la structure devant contenir les informations qui vont être transmises au joueur. </td></tr>
+    <tr><td class="paramname">numerojoueur</td><td>Numéro du prochain joueur devant jouer. </td></tr>
+    <tr><td class="paramname">partieencours</td><td>Indique si la partie est toujours en cours. (1 oui | 0 - non) </td></tr>
   </table>
   </dd>
 </dl>
@@ -534,15 +533,16 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Fonction de verification du bon deroulement de read. </p>
-<p>Verifie que l'operation de lecture dans un pipe s'est bien deroulée. </p>
+<p>Lecture des informations transmises par les fils. </p>
+<p>Le joueur qui vient de jouer fait remonter des informations au père une fois qu'il vient de terminer de faire circuler des informations aux autres joueurs. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">result</td><td>Int - Correspond au resultat de la fonction read appellée en parametre. </td></tr>
+    <tr><td class="paramname">pipes</td><td>Tableau des pipes. </td></tr>
+    <tr><td class="paramname">retourjeulu</td><td>Pointeur sur la structure devant contenir les informations destinées au père par le joueurs. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Void - Termine le programme en cas d'erreur </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Void - Termine en cas d'erreur </dd></dl>
 
 </div>
 </div>
@@ -569,7 +569,7 @@ Fonctions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Octobre 23 2014 15:59:30 pour SYS - Petits Chevaux par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Octobre 23 2014 16:24:26 pour SYS - Petits Chevaux par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
