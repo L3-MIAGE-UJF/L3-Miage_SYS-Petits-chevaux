@@ -24,7 +24,7 @@ jeu.o: src/jeu.c src/headers/des.h src/headers/regles.h src/headers/jeu.h
 	$(CC) $(CFLAGS) $(LIBS) -c src/jeu.c
 	
 clean:
-	rm -rf src/*.o src/*~ src/headers/*~
+	rm -rf src/*.o src/*~
 	
 mrproper:
 	make clean
