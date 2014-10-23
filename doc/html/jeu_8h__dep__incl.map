@@ -1,0 +1,5 @@
+<map id="src/headers/jeu.h" name="src/headers/jeu.h">
+<area shape="rect" id="node3" href="$dada_8c.html" title="Programme de jeu des petits chevaux utilisant des fork() et des pipes." alt="" coords="5,83,88,112"/>
+<area shape="rect" id="node5" href="$jeu_8c.html" title="Fonctions relatives au jeu pour le programme Petits Chevaux." alt="" coords="112,83,184,112"/>
+<area shape="rect" id="node7" href="$regles_8c.html" title="Fonctions relatives aux regles pour le jeu Petits chevaux." alt="" coords="208,83,299,112"/>
+</map>

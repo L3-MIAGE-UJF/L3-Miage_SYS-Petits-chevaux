@@ -1,0 +1,6 @@
+<map id="src/jeu.c" name="src/jeu.c">
+<area shape="rect" id="node9" href="$jeu_8h.html" title="Declaration des fonctions relatives au jeu pour le jeu Petits chevaux." alt="" coords="269,83,368,112"/>
+<area shape="rect" id="node11" href="$dada_8h.html" title="Declaration des fonctions de verification pour la lecture/ecriture dans les pipes." alt="" coords="392,83,501,112"/>
+<area shape="rect" id="node13" href="$des_8h.html" title="Declaration des fonctions relatives au des pour le jeu Petits chevaux." alt="" coords="525,83,629,112"/>
+<area shape="rect" id="node15" href="$regles_8h.html" title="Declaration des fonctions relatives aux regles pour le jeu Petits chevaux." alt="" coords="653,83,771,112"/>
+</map>

@@ -6,6 +6,14 @@
 Declaration des fonctions relatives au pipes pour le jeu Petits chevaux.  
 
 
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{pipes_8h__dep__incl}
+\end{center}
+\end{figure}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,6 +35,10 @@ A\-O\-U\-N Abel et D\-O\-U\-C\-H\-E\-T Maximilien
 \end{DoxyAuthor}
 Les pipes sont organisés de cette maniere \-: 0 -\/$>$ Entree du main depuis joueurs 1 -\/$>$ sortie du main vers joueur 1 2 -\/$>$ sortie du main vers joueur 2 3 -\/$>$ sortie du main vers joueur 3 4 -\/$>$ sortie du main vers joueur 4 5 -\/$>$ sortie du joueur 1 vers joueur 2 6 -\/$>$ sortie du joueur 2 vers joueur 3 7 -\/$>$ sortie du joueur 3 vers joueur 4 8 -\/$>$ sortie du joueur 4 vers joueur 1 
 
+Définition dans le fichier \hyperlink{pipes_8h_source}{pipes.\-h}.
+
+
+
 \subsection{Documentation des fonctions}
 \hypertarget{pipes_8h_a8efe620a19ac0e4f120345e57b6edeac}{\index{pipes.\-h@{pipes.\-h}!creation\-\_\-pipes@{creation\-\_\-pipes}}
 \index{creation\-\_\-pipes@{creation\-\_\-pipes}!pipes.h@{pipes.\-h}}
@@ -47,6 +59,22 @@ Fonction de creation des pipes
 \begin{DoxyReturn}{Renvoie}
 Retourne 0 si tout s'est bien passé 
 \end{DoxyReturn}
+
+
+Définition à la ligne 28 du fichier pipes.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{pipes_8h_a8efe620a19ac0e4f120345e57b6edeac_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{pipes_8h_a07068e6f96cddd3caeaa6dde747270e7}{\index{pipes.\-h@{pipes.\-h}!pipes\-\_\-fils\-\_\-end\-\_\-close@{pipes\-\_\-fils\-\_\-end\-\_\-close}}
 \index{pipes\-\_\-fils\-\_\-end\-\_\-close@{pipes\-\_\-fils\-\_\-end\-\_\-close}!pipes.h@{pipes.\-h}}
 \subsubsection[{pipes\-\_\-fils\-\_\-end\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}int pipes\-\_\-fils\-\_\-end\-\_\-close (
@@ -69,6 +97,22 @@ Ferme les pipes de chaque fils utilisés lorsque qu'il n'en a plus besoin.
 \begin{DoxyReturn}{Renvoie}
 Retourne 0 si tout s'est bien passé 
 \end{DoxyReturn}
+
+
+Définition à la ligne 82 du fichier pipes.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{pipes_8h_a07068e6f96cddd3caeaa6dde747270e7_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{pipes_8h_a4352c1ccc165cf89b0c4d6a748b1dd58}{\index{pipes.\-h@{pipes.\-h}!pipes\-\_\-fils\-\_\-start\-\_\-close@{pipes\-\_\-fils\-\_\-start\-\_\-close}}
 \index{pipes\-\_\-fils\-\_\-start\-\_\-close@{pipes\-\_\-fils\-\_\-start\-\_\-close}!pipes.h@{pipes.\-h}}
 \subsubsection[{pipes\-\_\-fils\-\_\-start\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}int pipes\-\_\-fils\-\_\-start\-\_\-close (
@@ -91,6 +135,22 @@ Ferme les pipes de chaque fils non utilisés.
 \begin{DoxyReturn}{Renvoie}
 Retourne 0 si tout s'est bien passé 
 \end{DoxyReturn}
+
+
+Définition à la ligne 47 du fichier pipes.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{pipes_8h_a4352c1ccc165cf89b0c4d6a748b1dd58_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{pipes_8h_a66dbda032de023003f32d4f4eec66875}{\index{pipes.\-h@{pipes.\-h}!pipes\-\_\-pere\-\_\-end\-\_\-close@{pipes\-\_\-pere\-\_\-end\-\_\-close}}
 \index{pipes\-\_\-pere\-\_\-end\-\_\-close@{pipes\-\_\-pere\-\_\-end\-\_\-close}!pipes.h@{pipes.\-h}}
 \subsubsection[{pipes\-\_\-pere\-\_\-end\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}int pipes\-\_\-pere\-\_\-end\-\_\-close (
@@ -110,6 +170,22 @@ Ferme les pipes du père utilisés lorsque qu'il n'en a plus besoin.
 \begin{DoxyReturn}{Renvoie}
 Retourne 0 si tout s'est bien passé 
 \end{DoxyReturn}
+
+
+Définition à la ligne 131 du fichier pipes.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{pipes_8h_a66dbda032de023003f32d4f4eec66875_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{pipes_8h_a7e56d9b0553fa826c8087ce2d06d987d}{\index{pipes.\-h@{pipes.\-h}!pipes\-\_\-pere\-\_\-start\-\_\-close@{pipes\-\_\-pere\-\_\-start\-\_\-close}}
 \index{pipes\-\_\-pere\-\_\-start\-\_\-close@{pipes\-\_\-pere\-\_\-start\-\_\-close}!pipes.h@{pipes.\-h}}
 \subsubsection[{pipes\-\_\-pere\-\_\-start\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}int pipes\-\_\-pere\-\_\-start\-\_\-close (
@@ -129,3 +205,19 @@ Ferme les pipes non utilisés du père.
 \begin{DoxyReturn}{Renvoie}
 Retourne 0 si tout s'est bien passé 
 \end{DoxyReturn}
+
+
+Définition à la ligne 107 du fichier pipes.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{pipes_8h_a7e56d9b0553fa826c8087ce2d06d987d_icgraph}
+\end{center}
+\end{figure}
+
+

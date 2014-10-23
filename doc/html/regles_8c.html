@@ -93,19 +93,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="jeu_8h_source.html">headers/jeu.h</a>&quot;</code><br/>
-</div><table class="memberdecls">
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de regles.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="regles_8c__incl.png" border="0" usemap="#src_2regles_8c" alt=""/></div>
+<map name="src_2regles_8c" id="src_2regles_8c">
+<area shape="rect" id="node5" href="jeu_8h.html" title="Declaration des fonctions relatives au jeu pour le jeu Petits chevaux." alt="" coords="91,83,189,112"/></map>
+</div>
+</div>
+<p><a href="regles_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a3a15257ac8021d722d70910d9eadd3b9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regles_8c.html#a3a15257ac8021d722d70910d9eadd3b9">cest_mon_tour</a> (int num_fils, <a class="el" href="structstruct__debuttour.html">struct_debuttour</a> *debuttourlu)</td></tr>
 <tr class="memdesc:a3a15257ac8021d722d70910d9eadd3b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique au joueur si c'est a son tour de jouer.  <a href="#a3a15257ac8021d722d70910d9eadd3b9"></a><br/></td></tr>
-<tr class="memitem:a14d8af584e9671d7a2f9ba56838f4672"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regles_8c.html#a14d8af584e9671d7a2f9ba56838f4672">nouvelle_position</a> (int num_fils, int positionjoueur, int resultatde)</td></tr>
-<tr class="memdesc:a14d8af584e9671d7a2f9ba56838f4672"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne une nouvelle position pour un joueur.  <a href="#a14d8af584e9671d7a2f9ba56838f4672"></a><br/></td></tr>
+<tr class="memitem:aaf9984dbb0e1cb7150618e4b48cf40e0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regles_8c.html#aaf9984dbb0e1cb7150618e4b48cf40e0">position_escalier</a> (int num_fils, int *positionjoueur, int resultatde)</td></tr>
+<tr class="memdesc:aaf9984dbb0e1cb7150618e4b48cf40e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne la position de joueur sur l'escalier.  <a href="#aaf9984dbb0e1cb7150618e4b48cf40e0"></a><br/></td></tr>
+<tr class="memitem:a93f9bc44c4d0ed42d65c52127698963c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regles_8c.html#a93f9bc44c4d0ed42d65c52127698963c">nouvelle_position</a> (int num_fils, int positionjoueur, int resultatde, int *danslescalier)</td></tr>
+<tr class="memdesc:a93f9bc44c4d0ed42d65c52127698963c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne une nouvelle position pour un joueur.  <a href="#a93f9bc44c4d0ed42d65c52127698963c"></a><br/></td></tr>
+<tr class="memitem:ae581f639bba80d9a02d827d6a9b94d15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regles_8c.html#ae581f639bba80d9a02d827d6a9b94d15">conflit_entre_deux_joueur</a> (<a class="el" href="structstruct__pendantjeu.html">struct_pendantjeu</a> *pendantjeulu, int *positionjoueur)</td></tr>
+<tr class="memdesc:ae581f639bba80d9a02d827d6a9b94d15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si il y a conflit entre deux joueurs.  <a href="#ae581f639bba80d9a02d827d6a9b94d15"></a><br/></td></tr>
 <tr class="memitem:a410ef983e618f644c9927192f5656443"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="regles_8c.html#a410ef983e618f644c9927192f5656443">le_joueur_a_gagne</a> (<a class="el" href="structstruct__retourjeu.html">struct_retourjeu</a> *retourjeulu)</td></tr>
 <tr class="memdesc:a410ef983e618f644c9927192f5656443"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le joueur a gagné.  <a href="#a410ef983e618f644c9927192f5656443"></a><br/></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><p>Fonctions relatives aux regles pour le jeu Petits chevaux. </p>
 <dl class="section author"><dt>Auteur</dt><dd>AOUN Abel et DOUCHET Maximilien </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="regles_8c_source.html">regles.c</a>.</p>
 </div><h2>Documentation des fonctions</h2>
 <a class="anchor" id="a3a15257ac8021d722d70910d9eadd3b9"></a>
 <div class="memitem">
@@ -142,6 +157,64 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Int Renvoie 0 si ce n'est pas au fils de jouer et 1 si c'est son tour. </dd></dl>
 
+<p>Définition à la ligne <a class="el" href="regles_8c_source.html#l00018">18</a> du fichier <a class="el" href="regles_8c_source.html">regles.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="regles_8c_a3a15257ac8021d722d70910d9eadd3b9_icgraph.png" border="0" usemap="#regles_8c_a3a15257ac8021d722d70910d9eadd3b9_icgraph" alt=""/></div>
+<map name="regles_8c_a3a15257ac8021d722d70910d9eadd3b9_icgraph" id="regles_8c_a3a15257ac8021d722d70910d9eadd3b9_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="163,5,213,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae581f639bba80d9a02d827d6a9b94d15"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void conflit_entre_deux_joueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct__pendantjeu.html">struct_pendantjeu</a> *&#160;</td>
+          <td class="paramname"><em>pendantjeulu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>positionjoueur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si il y a conflit entre deux joueurs. </p>
+<p>Selon le resultat du jeu et la position des fils cela detecte et change la position d'un cavalier si il sont sur la meme case. Le nouveau cheval prend la place du précédent sur la case. Et renvoie le précédent dans l'écurie. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pendantjeulu</td><td>Structure contenant toutes les informations transmises après la phase de jeu. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Int Renvoie 0 si il n'a pas encore gagné et 1 si il est vainqueur. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="regles_8c_source.html#l00233">233</a> du fichier <a class="el" href="regles_8c_source.html">regles.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="regles_8c_ae581f639bba80d9a02d827d6a9b94d15_icgraph.png" border="0" usemap="#regles_8c_ae581f639bba80d9a02d827d6a9b94d15_icgraph" alt=""/></div>
+<map name="regles_8c_ae581f639bba80d9a02d827d6a9b94d15_icgraph" id="regles_8c_ae581f639bba80d9a02d827d6a9b94d15_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="181,13,232,43"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a410ef983e618f644c9927192f5656443"></a>
@@ -168,9 +241,20 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Int Renvoie 0 si il n'a pas encore gagné et 1 si il est vainqueur. </dd></dl>
 
+<p>Définition à la ligne <a class="el" href="regles_8c_source.html#l00249">249</a> du fichier <a class="el" href="regles_8c_source.html">regles.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="regles_8c_a410ef983e618f644c9927192f5656443_icgraph.png" border="0" usemap="#regles_8c_a410ef983e618f644c9927192f5656443_icgraph" alt=""/></div>
+<map name="regles_8c_a410ef983e618f644c9927192f5656443_icgraph" id="regles_8c_a410ef983e618f644c9927192f5656443_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="184,5,235,35"/></map>
+</div>
+</p>
+
 </div>
 </div>
-<a class="anchor" id="a14d8af584e9671d7a2f9ba56838f4672"></a>
+<a class="anchor" id="a93f9bc44c4d0ed42d65c52127698963c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -190,7 +274,13 @@ Fonctions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>resultatde</em>&#160;</td>
+          <td class="paramname"><em>resultatde</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>danslescalier</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -212,12 +302,78 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Int Renvoie 0 si ce n'est pas au fils de jouer et 1 si c'est son tour. </dd></dl>
 
+<p>Définition à la ligne <a class="el" href="regles_8c_source.html#l00107">107</a> du fichier <a class="el" href="regles_8c_source.html">regles.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="regles_8c_a93f9bc44c4d0ed42d65c52127698963c_cgraph.png" border="0" usemap="#regles_8c_a93f9bc44c4d0ed42d65c52127698963c_cgraph" alt=""/></div>
+<map name="regles_8c_a93f9bc44c4d0ed42d65c52127698963c_cgraph" id="regles_8c_a93f9bc44c4d0ed42d65c52127698963c_cgraph">
+<area shape="rect" id="node3" href="regles_8h.html#a93f9bc44c4d0ed42d65c52127698963c" title="Donne une nouvelle position pour un joueur." alt="" coords="176,29,299,59"/><area shape="rect" id="node6" href="regles_8h.html#a1b36b7c7fb154d4c5402a531802c9224" title="position_escalier" alt="" coords="348,56,465,85"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="regles_8c_a93f9bc44c4d0ed42d65c52127698963c_icgraph.png" border="0" usemap="#regles_8c_a93f9bc44c4d0ed42d65c52127698963c_icgraph" alt=""/></div>
+<map name="regles_8c_a93f9bc44c4d0ed42d65c52127698963c_icgraph" id="regles_8c_a93f9bc44c4d0ed42d65c52127698963c_icgraph">
+<area shape="rect" id="node3" href="jeu_8c.html#ab996810124ce6383620fa3963db8b275" title="Action effectuées par le joueur lorsque que vient son tour." alt="" coords="177,29,239,59"/><area shape="rect" id="node5" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="288,29,339,59"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aaf9984dbb0e1cb7150618e4b48cf40e0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int position_escalier </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_fils</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>positionjoueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>resultatde</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Donne la position de joueur sur l'escalier. </p>
+<p>Donne une nouvelle position selon la position et le numero de joueur transmis. Mais cette fonction est appellée dans le cas ou le joueur est devant ou sur l'escalier. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num_fils</td><td>Correspond au numéro du fils appelant la fonction. </td></tr>
+    <tr><td class="paramname">positionjoueur</td><td>Correspond a la position du fils appelant la fonction. </td></tr>
+    <tr><td class="paramname">resultatde</td><td>Correspond a la valeur du lance de des du joueur. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Int Renvoie 0 si ce n'est pas au fils de jouer et 1 si c'est son tour. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="regles_8c_source.html#l00031">31</a> du fichier <a class="el" href="regles_8c_source.html">regles.c</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Octobre 23 2014 16:24:26 pour SYS - Petits Chevaux par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Octobre 23 2014 18:05:03 pour SYS - Petits Chevaux par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

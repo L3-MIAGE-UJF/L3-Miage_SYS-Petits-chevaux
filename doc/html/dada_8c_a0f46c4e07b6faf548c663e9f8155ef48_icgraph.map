@@ -1,0 +1,7 @@
+<map id="checkW" name="checkW">
+<area shape="rect" id="node3" href="$jeu_8c.html#a0a25bcc79238a489f286585b395ccd17" title="Transmission des informations du jeu d&#39;un joueurs aux autres joueurs." alt="" coords="132,5,303,51"/>
+<area shape="rect" id="node7" href="$jeu_8c.html#afbccfff41a7a1c5872f6f129a8a9ab44" title="Fait passer les informations au suivant." alt="" coords="127,75,308,104"/>
+<area shape="rect" id="node10" href="$jeu_8c.html#aedc8c2b1001e2680710ac7ef3d73cac8" title="Transmet les informations au père." alt="" coords="132,127,303,174"/>
+<area shape="rect" id="node13" href="$jeu_8c.html#a2a267585992923972c7c142df69c5b89" title="Transmet les informations du père vers les fils." alt="" coords="137,197,297,243"/>
+<area shape="rect" id="node5" href="$dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="357,105,408,135"/>
+</map>

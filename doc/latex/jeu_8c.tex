@@ -13,6 +13,14 @@ Fonctions relatives au jeu pour le programme Petits Chevaux.
 {\ttfamily \#include \char`\"{}headers/dada.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}headers/des.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}headers/regles.\-h\char`\"{}}\\*
+Graphe des dépendances par inclusion de jeu.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jeu_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
@@ -22,7 +30,7 @@ void \hyperlink{jeu_8c_a725da0480654655d9b7fefa6c8b8ec1d}{cest\-\_\-a\-\_\-qui\-
 \begin{DoxyCompactList}\small\item\em Recupere les informations pour le prochain tour. \end{DoxyCompactList}\item 
 int \hyperlink{jeu_8c_a9b781c5cf503cd1379cd5363baf5518b}{la\-\_\-partie\-\_\-est\-\_\-interrompue} (\hyperlink{structstruct__debuttour}{struct\-\_\-debuttour} $\ast$debuttourlu)
 \begin{DoxyCompactList}\small\item\em Verifie si la partie n'a pas été interrompue. \end{DoxyCompactList}\item 
-int \hyperlink{jeu_8c_aae8ac69439d6ed8e1dd5b57251701a2f}{je\-\_\-joue} (int num\-\_\-fils, int $\ast$positionjoueur, \hyperlink{structstruct__pendantjeu}{struct\-\_\-pendantjeu} $\ast$pendantjeu)
+int \hyperlink{jeu_8c_ab996810124ce6383620fa3963db8b275}{je\-\_\-joue} (int num\-\_\-fils, int $\ast$positionjoueur, \hyperlink{structstruct__pendantjeu}{struct\-\_\-pendantjeu} $\ast$pendantjeu, int $\ast$danslescalier)
 \begin{DoxyCompactList}\small\item\em Action effectuées par le joueur lorsque que vient son tour. \end{DoxyCompactList}\item 
 void \hyperlink{jeu_8c_a0a25bcc79238a489f286585b395ccd17}{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin} (int num\-\_\-fils, int $\ast$$\ast$pipes, \hyperlink{structstruct__pendantjeu}{struct\-\_\-pendantjeu} $\ast$pendantjeu)
 \begin{DoxyCompactList}\small\item\em Transmission des informations du jeu d'un joueurs aux autres joueurs. \end{DoxyCompactList}\item 
@@ -44,6 +52,10 @@ int \hyperlink{jeu_8c_ab99f683f90789787a7d8201407214cc1}{joueur\-\_\-suivant} (\
 Fonctions relatives au jeu pour le programme Petits Chevaux. \begin{DoxyAuthor}{Auteur}
 A\-O\-U\-N Abel et D\-O\-U\-C\-H\-E\-T Maximilien 
 \end{DoxyAuthor}
+
+
+Définition dans le fichier \hyperlink{jeu_8c_source}{jeu.\-c}.
+
 
 
 \subsection{Documentation des fonctions}
@@ -72,6 +84,34 @@ Récupère dans le pipe venant du main vers le joueur concerné la structure con
 \begin{DoxyReturn}{Renvoie}
 Void 
 \end{DoxyReturn}
+
+
+Définition à la ligne 46 du fichier jeu.\-c.
+
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{jeu_8c_a725da0480654655d9b7fefa6c8b8ec1d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{jeu_8c_a725da0480654655d9b7fefa6c8b8ec1d_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{jeu_8c_af71947ee506f911a3e0b09dd28198e5e}{\index{jeu.\-c@{jeu.\-c}!jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour@{jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour}}
 \index{jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour@{jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour}!jeu.c@{jeu.\-c}}
 \subsubsection[{jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour}]{\setlength{\rightskip}{0pt plus 5cm}void jattend\-\_\-que\-\_\-linfo\-\_\-fasse\-\_\-le\-\_\-tour (
@@ -97,6 +137,34 @@ Permet la récupération des informations envoyés par le biais du joueur préc�
 \begin{DoxyReturn}{Renvoie}
 Void -\/ Termine en cas d'erreur 
 \end{DoxyReturn}
+
+
+Définition à la ligne 107 du fichier jeu.\-c.
+
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{jeu_8c_af71947ee506f911a3e0b09dd28198e5e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{jeu_8c_af71947ee506f911a3e0b09dd28198e5e_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{jeu_8c_afbccfff41a7a1c5872f6f129a8a9ab44}{\index{jeu.\-c@{jeu.\-c}!je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message@{je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message}}
 \index{je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message@{je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message}!jeu.c@{jeu.\-c}}
 \subsubsection[{je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message}]{\setlength{\rightskip}{0pt plus 5cm}void je\-\_\-fais\-\_\-passer\-\_\-le\-\_\-message (
@@ -122,15 +190,44 @@ Permet la transmission des informations envoyés par le biais du joueur précéd
 \begin{DoxyReturn}{Renvoie}
 Void -\/ Termine en cas d'erreur 
 \end{DoxyReturn}
-\hypertarget{jeu_8c_aae8ac69439d6ed8e1dd5b57251701a2f}{\index{jeu.\-c@{jeu.\-c}!je\-\_\-joue@{je\-\_\-joue}}
+
+
+Définition à la ligne 128 du fichier jeu.\-c.
+
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{jeu_8c_afbccfff41a7a1c5872f6f129a8a9ab44_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{jeu_8c_afbccfff41a7a1c5872f6f129a8a9ab44_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{jeu_8c_ab996810124ce6383620fa3963db8b275}{\index{jeu.\-c@{jeu.\-c}!je\-\_\-joue@{je\-\_\-joue}}
 \index{je\-\_\-joue@{je\-\_\-joue}!jeu.c@{jeu.\-c}}
 \subsubsection[{je\-\_\-joue}]{\setlength{\rightskip}{0pt plus 5cm}int je\-\_\-joue (
 \begin{DoxyParamCaption}
 \item[{int}]{num\-\_\-fils, }
 \item[{int $\ast$}]{positionjoueur, }
-\item[{{\bf struct\-\_\-pendantjeu} $\ast$}]{pendantjeu}
+\item[{{\bf struct\-\_\-pendantjeu} $\ast$}]{pendantjeu, }
+\item[{int $\ast$}]{danslescalier}
 \end{DoxyParamCaption}
-)}}\label{jeu_8c_aae8ac69439d6ed8e1dd5b57251701a2f}
+)}}\label{jeu_8c_ab996810124ce6383620fa3963db8b275}
 
 
 Action effectuées par le joueur lorsque que vient son tour. 
@@ -147,6 +244,34 @@ Le joueur lance un dé, demande aux reglès quelle est sa nouvelle position et e
 \begin{DoxyReturn}{Renvoie}
 Int -\/ Retourne le resultat du lancé de dé, la position est déjà modifiée. 
 \end{DoxyReturn}
+
+
+Définition à la ligne 71 du fichier jeu.\-c.
+
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jeu_8c_ab996810124ce6383620fa3963db8b275_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{jeu_8c_ab996810124ce6383620fa3963db8b275_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{jeu_8c_aedc8c2b1001e2680710ac7ef3d73cac8}{\index{jeu.\-c@{jeu.\-c}!je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere@{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere}}
 \index{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere@{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere}!jeu.c@{jeu.\-c}}
 \subsubsection[{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere}]{\setlength{\rightskip}{0pt plus 5cm}void je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-pere (
@@ -178,6 +303,34 @@ Quand les informations transmises ont fait le tour, on génère une structure co
 \begin{DoxyReturn}{Renvoie}
 Void -\/ Termine en cas d'erreur 
 \end{DoxyReturn}
+
+
+Définition à la ligne 157 du fichier jeu.\-c.
+
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{jeu_8c_aedc8c2b1001e2680710ac7ef3d73cac8_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{jeu_8c_aedc8c2b1001e2680710ac7ef3d73cac8_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{jeu_8c_a0a25bcc79238a489f286585b395ccd17}{\index{jeu.\-c@{jeu.\-c}!je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin@{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin}}
 \index{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin@{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin}!jeu.c@{jeu.\-c}}
 \subsubsection[{je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin}]{\setlength{\rightskip}{0pt plus 5cm}void je\-\_\-transmet\-\_\-mon\-\_\-resultat\-\_\-au\-\_\-voisin (
@@ -203,6 +356,34 @@ La structure contenant les informations du jeu qui vient d'être effectué est d
 \begin{DoxyReturn}{Renvoie}
 Void -\/ Termine en cas d'erreur 
 \end{DoxyReturn}
+
+
+Définition à la ligne 92 du fichier jeu.\-c.
+
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{jeu_8c_a0a25bcc79238a489f286585b395ccd17_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{jeu_8c_a0a25bcc79238a489f286585b395ccd17_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{jeu_8c_ab99f683f90789787a7d8201407214cc1}{\index{jeu.\-c@{jeu.\-c}!joueur\-\_\-suivant@{joueur\-\_\-suivant}}
 \index{joueur\-\_\-suivant@{joueur\-\_\-suivant}!jeu.c@{jeu.\-c}}
 \subsubsection[{joueur\-\_\-suivant}]{\setlength{\rightskip}{0pt plus 5cm}int joueur\-\_\-suivant (
@@ -222,6 +403,22 @@ Selon le retour des informations renvoyées au père après un tour de jeu. Le p
 \begin{DoxyReturn}{Renvoie}
 result Int -\/ Le numéro du prochain joueur devant s'executer. 
 \end{DoxyReturn}
+
+
+Définition à la ligne 207 du fichier jeu.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{jeu_8c_ab99f683f90789787a7d8201407214cc1_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{jeu_8c_a9b781c5cf503cd1379cd5363baf5518b}{\index{jeu.\-c@{jeu.\-c}!la\-\_\-partie\-\_\-est\-\_\-interrompue@{la\-\_\-partie\-\_\-est\-\_\-interrompue}}
 \index{la\-\_\-partie\-\_\-est\-\_\-interrompue@{la\-\_\-partie\-\_\-est\-\_\-interrompue}!jeu.c@{jeu.\-c}}
 \subsubsection[{la\-\_\-partie\-\_\-est\-\_\-interrompue}]{\setlength{\rightskip}{0pt plus 5cm}int la\-\_\-partie\-\_\-est\-\_\-interrompue (
@@ -241,6 +438,22 @@ Dans le cas ou un joueur a gagné, nous considérons que la partie est finie. Da
 \begin{DoxyReturn}{Renvoie}
 Int -\/ Renvoie 1 si la partie est termine ou interrompue, 0 sinon. 
 \end{DoxyReturn}
+
+
+Définition à la ligne 58 du fichier jeu.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{jeu_8c_a9b781c5cf503cd1379cd5363baf5518b_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{jeu_8c_a2a267585992923972c7c142df69c5b89}{\index{jeu.\-c@{jeu.\-c}!pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils@{pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils}}
 \index{pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils@{pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils}!jeu.c@{jeu.\-c}}
 \subsubsection[{pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils}]{\setlength{\rightskip}{0pt plus 5cm}void pere\-\_\-envoyer\-\_\-message\-\_\-aux\-\_\-fils (
@@ -269,6 +482,34 @@ Quand les informations transmises au père ont été analysé, ou lors du premie
 \begin{DoxyReturn}{Renvoie}
 Void -\/ Termine en cas d'erreur 
 \end{DoxyReturn}
+
+
+Définition à la ligne 176 du fichier jeu.\-c.
+
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{jeu_8c_a2a267585992923972c7c142df69c5b89_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{jeu_8c_a2a267585992923972c7c142df69c5b89_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{jeu_8c_a96da99031da1d74f38b559243dad2171}{\index{jeu.\-c@{jeu.\-c}!pere\-\_\-lit\-\_\-retour\-\_\-tour@{pere\-\_\-lit\-\_\-retour\-\_\-tour}}
 \index{pere\-\_\-lit\-\_\-retour\-\_\-tour@{pere\-\_\-lit\-\_\-retour\-\_\-tour}!jeu.c@{jeu.\-c}}
 \subsubsection[{pere\-\_\-lit\-\_\-retour\-\_\-tour}]{\setlength{\rightskip}{0pt plus 5cm}void pere\-\_\-lit\-\_\-retour\-\_\-tour (
@@ -291,6 +532,34 @@ Le joueur qui vient de jouer fait remonter des informations au père une fois qu
 \begin{DoxyReturn}{Renvoie}
 Void -\/ Termine en cas d'erreur 
 \end{DoxyReturn}
+
+
+Définition à la ligne 194 du fichier jeu.\-c.
+
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{jeu_8c_a96da99031da1d74f38b559243dad2171_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{jeu_8c_a96da99031da1d74f38b559243dad2171_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{jeu_8c_aad47be4fef9e94264139f82a73b259ae}{\index{jeu.\-c@{jeu.\-c}!premier\-\_\-joueur@{premier\-\_\-joueur}}
 \index{premier\-\_\-joueur@{premier\-\_\-joueur}!jeu.c@{jeu.\-c}}
 \subsubsection[{premier\-\_\-joueur}]{\setlength{\rightskip}{0pt plus 5cm}int premier\-\_\-joueur (
@@ -305,3 +574,19 @@ Selection par l'utilisateur du premier joueur.
 Demande a l'utilisateur de saisir le numero du premier joueur. \begin{DoxyReturn}{Renvoie}
 Int -\/ Retourne le numero du joueur saisi. 
 \end{DoxyReturn}
+
+
+Définition à la ligne 22 du fichier jeu.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{jeu_8c_aad47be4fef9e94264139f82a73b259ae_icgraph}
+\end{center}
+\end{figure}
+
+

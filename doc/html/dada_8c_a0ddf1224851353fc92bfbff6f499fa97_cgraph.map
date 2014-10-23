@@ -1,0 +1,27 @@
+<map id="main" name="main">
+<area shape="rect" id="node3" href="$des_8c.html#af951d515465516d4056cec3f4571ee28" title="Initialise le generateur de nombres aleatoires." alt="" coords="161,5,231,35"/>
+<area shape="rect" id="node5" href="$pipes_8h.html#a8efe620a19ac0e4f120345e57b6edeac" title="Creation des pipes." alt="" coords="143,59,249,88"/>
+<area shape="rect" id="node7" href="$pipes_8h.html#a4352c1ccc165cf89b0c4d6a748b1dd58" title="Fermeture des pipes non utilises pour chaque fils." alt="" coords="123,112,269,141"/>
+<area shape="rect" id="node9" href="$jeu_8h.html#a725da0480654655d9b7fefa6c8b8ec1d" title="Recupere les informations pour le prochain tour." alt="" coords="125,376,267,405"/>
+<area shape="rect" id="node13" href="$jeu_8h.html#a9b781c5cf503cd1379cd5363baf5518b" title="Verifie si la partie n&#39;a pas été interrompue." alt="" coords="111,216,281,245"/>
+<area shape="rect" id="node15" href="$des_8c.html#a2d90f82862986ff270f16f9771580b53" title="Simule un lancé de dé à 6 cotés." alt="" coords="355,179,440,208"/>
+<area shape="rect" id="node17" href="$regles_8h.html#a3a15257ac8021d722d70910d9eadd3b9" title="Indique au joueur si c&#39;est a son tour de jouer." alt="" coords="143,323,249,352"/>
+<area shape="rect" id="node19" href="$jeu_8h.html#a5775c2fd2b9eff5f551a8a923884583f" title="Action effectuées par le joueur lorsque que vient son tour." alt="" coords="165,269,227,299"/>
+<area shape="rect" id="node27" href="$jeu_8h.html#a0a25bcc79238a489f286585b395ccd17" title="Transmission des informations du jeu d&#39;un joueurs aux autres joueurs." alt="" coords="111,973,281,1019"/>
+<area shape="rect" id="node31" href="$jeu_8h.html#af71947ee506f911a3e0b09dd28198e5e" title="Attente après envoie des informations du retour de ces informations." alt="" coords="117,482,275,529"/>
+<area shape="rect" id="node34" href="$jeu_8h.html#aedc8c2b1001e2680710ac7ef3d73cac8" title="Transmet les informations au père." alt="" coords="111,605,281,651"/>
+<area shape="rect" id="node37" href="$jeu_8h.html#afbccfff41a7a1c5872f6f129a8a9ab44" title="Fait passer les informations au suivant." alt="" coords="105,552,287,581"/>
+<area shape="rect" id="node41" href="$regles_8h.html#ae581f639bba80d9a02d827d6a9b94d15" title="Indique si il y a conflit entre deux joueurs." alt="" coords="132,674,260,721"/>
+<area shape="rect" id="node43" href="$pipes_8h.html#a07068e6f96cddd3caeaa6dde747270e7" title="Fermeture des pipes utilisés pour chaque fils." alt="" coords="125,744,267,773"/>
+<area shape="rect" id="node45" href="$pipes_8h.html#a7e56d9b0553fa826c8087ce2d06d987d" title="Fermeture des pipes non utilises pour le pere." alt="" coords="119,797,273,827"/>
+<area shape="rect" id="node47" href="$jeu_8h.html#a2a267585992923972c7c142df69c5b89" title="Transmet les informations du père vers les fils." alt="" coords="116,850,276,897"/>
+<area shape="rect" id="node50" href="$jeu_8h.html#aad47be4fef9e94264139f82a73b259ae" title="Selection par l&#39;utilisateur du premier joueur." alt="" coords="143,920,249,949"/>
+<area shape="rect" id="node52" href="$jeu_8h.html#a96da99031da1d74f38b559243dad2171" title="Lecture des informations transmises par les fils." alt="" coords="129,429,263,459"/>
+<area shape="rect" id="node55" href="$jeu_8h.html#ab99f683f90789787a7d8201407214cc1" title="Indique le prochain joueur devant jouer." alt="" coords="143,1043,249,1072"/>
+<area shape="rect" id="node57" href="$regles_8h.html#a410ef983e618f644c9927192f5656443" title="Indique si le joueur a gagné." alt="" coords="131,1096,261,1125"/>
+<area shape="rect" id="node59" href="$pipes_8h.html#a66dbda032de023003f32d4f4eec66875" title="Fermeture des pipes utilisés pour le père." alt="" coords="121,1149,271,1179"/>
+<area shape="rect" id="node11" href="$dada_8c.html#a97c9452b045a7fdb188a62e97b58e5d8" title="Fonction de verification du bon deroulement de read." alt="" coords="364,460,431,489"/>
+<area shape="rect" id="node22" href="$regles_8h.html#a93f9bc44c4d0ed42d65c52127698963c" title="Donne une nouvelle position pour un joueur." alt="" coords="336,269,459,299"/>
+<area shape="rect" id="node25" href="$regles_8h.html#a1b36b7c7fb154d4c5402a531802c9224" title="position_escalier" alt="" coords="508,269,625,299"/>
+<area shape="rect" id="node29" href="$dada_8c.html#a0f46c4e07b6faf548c663e9f8155ef48" title="Fonction de verification du bon deroulement de write." alt="" coords="363,736,432,765"/>
+</map>

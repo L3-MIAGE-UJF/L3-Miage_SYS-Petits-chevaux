@@ -1,0 +1,5 @@
+<map id="je_joue" name="je_joue">
+<area shape="rect" id="node3" href="$des_8c.html#a2d90f82862986ff270f16f9771580b53" title="Simule un lancé de dé à 6 cotés." alt="" coords="136,5,221,35"/>
+<area shape="rect" id="node5" href="$regles_8h.html#a93f9bc44c4d0ed42d65c52127698963c" title="Donne une nouvelle position pour un joueur." alt="" coords="117,83,240,112"/>
+<area shape="rect" id="node8" href="$regles_8h.html#a1b36b7c7fb154d4c5402a531802c9224" title="position_escalier" alt="" coords="289,83,407,112"/>
+</map>

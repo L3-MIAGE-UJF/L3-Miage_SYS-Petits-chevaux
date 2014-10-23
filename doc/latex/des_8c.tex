@@ -8,6 +8,14 @@ Fonctions de simulation d'un tirage de des.
 
 {\ttfamily \#include $<$stdlib.\-h$>$}\\*
 {\ttfamily \#include $<$time.\-h$>$}\\*
+Graphe des dépendances par inclusion de des.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{des_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
@@ -21,6 +29,10 @@ int \hyperlink{des_8c_a2d90f82862986ff270f16f9771580b53}{lancer\-\_\-des} ()
 Fonctions de simulation d'un tirage de des. \begin{DoxyAuthor}{Auteur}
 A\-O\-U\-N Abel et D\-O\-U\-C\-H\-E\-T Maximilien 
 \end{DoxyAuthor}
+
+
+Définition dans le fichier \hyperlink{des_8c_source}{des.\-c}.
+
 
 
 \subsection{Documentation des fonctions}
@@ -38,6 +50,22 @@ Initialise le generateur de nombres aleatoires.
 Initialise la graine allant servir pour la génération de nombres aléatoire. \begin{DoxyReturn}{Renvoie}
 Void 
 \end{DoxyReturn}
+
+
+Définition à la ligne 16 du fichier des.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{des_8c_af951d515465516d4056cec3f4571ee28_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{des_8c_a2d90f82862986ff270f16f9771580b53}{\index{des.\-c@{des.\-c}!lancer\-\_\-des@{lancer\-\_\-des}}
 \index{lancer\-\_\-des@{lancer\-\_\-des}!des.c@{des.\-c}}
 \subsubsection[{lancer\-\_\-des}]{\setlength{\rightskip}{0pt plus 5cm}int lancer\-\_\-des (
@@ -52,3 +80,19 @@ Simule un lancé de dé à 6 cotés.
 \begin{DoxyReturn}{Renvoie}
 Int -\/ Compris entre 1 et 6. 
 \end{DoxyReturn}
+
+
+Définition à la ligne 25 du fichier des.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{des_8c_a2d90f82862986ff270f16f9771580b53_icgraph}
+\end{center}
+\end{figure}
+
+

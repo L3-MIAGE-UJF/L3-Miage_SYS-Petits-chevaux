@@ -1,0 +1,5 @@
+<map id="position_escalier" name="position_escalier">
+<area shape="rect" id="node3" href="$regles_8c.html#a93f9bc44c4d0ed42d65c52127698963c" title="Donne une nouvelle position pour un joueur." alt="" coords="173,29,296,59"/>
+<area shape="rect" id="node5" href="$jeu_8c.html#ab996810124ce6383620fa3963db8b275" title="Action effectuées par le joueur lorsque que vient son tour." alt="" coords="345,29,407,59"/>
+<area shape="rect" id="node7" href="$dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="456,29,507,59"/>
+</map>

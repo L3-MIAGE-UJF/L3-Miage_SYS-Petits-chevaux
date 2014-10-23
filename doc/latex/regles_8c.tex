@@ -8,13 +8,25 @@ Fonctions relatives aux regles pour le jeu Petits chevaux.
 
 {\ttfamily \#include $<$stdio.\-h$>$}\\*
 {\ttfamily \#include \char`\"{}headers/jeu.\-h\char`\"{}}\\*
+Graphe des dépendances par inclusion de regles.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{regles_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 int \hyperlink{regles_8c_a3a15257ac8021d722d70910d9eadd3b9}{cest\-\_\-mon\-\_\-tour} (int num\-\_\-fils, \hyperlink{structstruct__debuttour}{struct\-\_\-debuttour} $\ast$debuttourlu)
 \begin{DoxyCompactList}\small\item\em Indique au joueur si c'est a son tour de jouer. \end{DoxyCompactList}\item 
-int \hyperlink{regles_8c_a14d8af584e9671d7a2f9ba56838f4672}{nouvelle\-\_\-position} (int num\-\_\-fils, int positionjoueur, int resultatde)
+int \hyperlink{regles_8c_aaf9984dbb0e1cb7150618e4b48cf40e0}{position\-\_\-escalier} (int num\-\_\-fils, int $\ast$positionjoueur, int resultatde)
+\begin{DoxyCompactList}\small\item\em Donne la position de joueur sur l'escalier. \end{DoxyCompactList}\item 
+int \hyperlink{regles_8c_a93f9bc44c4d0ed42d65c52127698963c}{nouvelle\-\_\-position} (int num\-\_\-fils, int positionjoueur, int resultatde, int $\ast$danslescalier)
 \begin{DoxyCompactList}\small\item\em Donne une nouvelle position pour un joueur. \end{DoxyCompactList}\item 
+void \hyperlink{regles_8c_ae581f639bba80d9a02d827d6a9b94d15}{conflit\-\_\-entre\-\_\-deux\-\_\-joueur} (\hyperlink{structstruct__pendantjeu}{struct\-\_\-pendantjeu} $\ast$pendantjeulu, int $\ast$positionjoueur)
+\begin{DoxyCompactList}\small\item\em Indique si il y a conflit entre deux joueurs. \end{DoxyCompactList}\item 
 int \hyperlink{regles_8c_a410ef983e618f644c9927192f5656443}{le\-\_\-joueur\-\_\-a\-\_\-gagne} (\hyperlink{structstruct__retourjeu}{struct\-\_\-retourjeu} $\ast$retourjeulu)
 \begin{DoxyCompactList}\small\item\em Indique si le joueur a gagné. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -23,6 +35,10 @@ int \hyperlink{regles_8c_a410ef983e618f644c9927192f5656443}{le\-\_\-joueur\-\_\-
 Fonctions relatives aux regles pour le jeu Petits chevaux. \begin{DoxyAuthor}{Auteur}
 A\-O\-U\-N Abel et D\-O\-U\-C\-H\-E\-T Maximilien 
 \end{DoxyAuthor}
+
+
+Définition dans le fichier \hyperlink{regles_8c_source}{regles.\-c}.
+
 
 
 \subsection{Documentation des fonctions}
@@ -48,6 +64,58 @@ Celon la valeur renvoyée le joueur effectuera son tour ou non.
 \begin{DoxyReturn}{Renvoie}
 Int Renvoie 0 si ce n'est pas au fils de jouer et 1 si c'est son tour. 
 \end{DoxyReturn}
+
+
+Définition à la ligne 18 du fichier regles.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{regles_8c_a3a15257ac8021d722d70910d9eadd3b9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{regles_8c_ae581f639bba80d9a02d827d6a9b94d15}{\index{regles.\-c@{regles.\-c}!conflit\-\_\-entre\-\_\-deux\-\_\-joueur@{conflit\-\_\-entre\-\_\-deux\-\_\-joueur}}
+\index{conflit\-\_\-entre\-\_\-deux\-\_\-joueur@{conflit\-\_\-entre\-\_\-deux\-\_\-joueur}!regles.c@{regles.\-c}}
+\subsubsection[{conflit\-\_\-entre\-\_\-deux\-\_\-joueur}]{\setlength{\rightskip}{0pt plus 5cm}void conflit\-\_\-entre\-\_\-deux\-\_\-joueur (
+\begin{DoxyParamCaption}
+\item[{{\bf struct\-\_\-pendantjeu} $\ast$}]{pendantjeulu, }
+\item[{int $\ast$}]{positionjoueur}
+\end{DoxyParamCaption}
+)}}\label{regles_8c_ae581f639bba80d9a02d827d6a9b94d15}
+
+
+Indique si il y a conflit entre deux joueurs. 
+
+Selon le resultat du jeu et la position des fils cela detecte et change la position d'un cavalier si il sont sur la meme case. Le nouveau cheval prend la place du précédent sur la case. Et renvoie le précédent dans l'écurie. 
+\begin{DoxyParams}{Paramètres}
+{\em pendantjeulu} & Structure contenant toutes les informations transmises après la phase de jeu. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Int Renvoie 0 si il n'a pas encore gagné et 1 si il est vainqueur. 
+\end{DoxyReturn}
+
+
+Définition à la ligne 233 du fichier regles.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{regles_8c_ae581f639bba80d9a02d827d6a9b94d15_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{regles_8c_a410ef983e618f644c9927192f5656443}{\index{regles.\-c@{regles.\-c}!le\-\_\-joueur\-\_\-a\-\_\-gagne@{le\-\_\-joueur\-\_\-a\-\_\-gagne}}
 \index{le\-\_\-joueur\-\_\-a\-\_\-gagne@{le\-\_\-joueur\-\_\-a\-\_\-gagne}!regles.c@{regles.\-c}}
 \subsubsection[{le\-\_\-joueur\-\_\-a\-\_\-gagne}]{\setlength{\rightskip}{0pt plus 5cm}int le\-\_\-joueur\-\_\-a\-\_\-gagne (
@@ -67,15 +135,32 @@ Selon le resultat du jeu d'un fils, cela indique si ce fils a gagné
 \begin{DoxyReturn}{Renvoie}
 Int Renvoie 0 si il n'a pas encore gagné et 1 si il est vainqueur. 
 \end{DoxyReturn}
-\hypertarget{regles_8c_a14d8af584e9671d7a2f9ba56838f4672}{\index{regles.\-c@{regles.\-c}!nouvelle\-\_\-position@{nouvelle\-\_\-position}}
+
+
+Définition à la ligne 249 du fichier regles.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{regles_8c_a410ef983e618f644c9927192f5656443_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{regles_8c_a93f9bc44c4d0ed42d65c52127698963c}{\index{regles.\-c@{regles.\-c}!nouvelle\-\_\-position@{nouvelle\-\_\-position}}
 \index{nouvelle\-\_\-position@{nouvelle\-\_\-position}!regles.c@{regles.\-c}}
 \subsubsection[{nouvelle\-\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}int nouvelle\-\_\-position (
 \begin{DoxyParamCaption}
 \item[{int}]{num\-\_\-fils, }
 \item[{int}]{positionjoueur, }
-\item[{int}]{resultatde}
+\item[{int}]{resultatde, }
+\item[{int $\ast$}]{danslescalier}
 \end{DoxyParamCaption}
-)}}\label{regles_8c_a14d8af584e9671d7a2f9ba56838f4672}
+)}}\label{regles_8c_a93f9bc44c4d0ed42d65c52127698963c}
 
 
 Donne une nouvelle position pour un joueur. 
@@ -92,3 +177,60 @@ Donne une nouvelle position selon la position et le numero de joueur transmis.
 \begin{DoxyReturn}{Renvoie}
 Int Renvoie 0 si ce n'est pas au fils de jouer et 1 si c'est son tour. 
 \end{DoxyReturn}
+
+
+Définition à la ligne 107 du fichier regles.\-c.
+
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{regles_8c_a93f9bc44c4d0ed42d65c52127698963c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{regles_8c_a93f9bc44c4d0ed42d65c52127698963c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{regles_8c_aaf9984dbb0e1cb7150618e4b48cf40e0}{\index{regles.\-c@{regles.\-c}!position\-\_\-escalier@{position\-\_\-escalier}}
+\index{position\-\_\-escalier@{position\-\_\-escalier}!regles.c@{regles.\-c}}
+\subsubsection[{position\-\_\-escalier}]{\setlength{\rightskip}{0pt plus 5cm}int position\-\_\-escalier (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-fils, }
+\item[{int $\ast$}]{positionjoueur, }
+\item[{int}]{resultatde}
+\end{DoxyParamCaption}
+)}}\label{regles_8c_aaf9984dbb0e1cb7150618e4b48cf40e0}
+
+
+Donne la position de joueur sur l'escalier. 
+
+Donne une nouvelle position selon la position et le numero de joueur transmis. Mais cette fonction est appellée dans le cas ou le joueur est devant ou sur l'escalier. 
+\begin{DoxyParams}{Paramètres}
+{\em num\-\_\-fils} & Correspond au numéro du fils appelant la fonction. \\
+\hline
+{\em positionjoueur} & Correspond a la position du fils appelant la fonction. \\
+\hline
+{\em resultatde} & Correspond a la valeur du lance de des du joueur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Int Renvoie 0 si ce n'est pas au fils de jouer et 1 si c'est son tour. 
+\end{DoxyReturn}
+
+
+Définition à la ligne 31 du fichier regles.\-c.
+

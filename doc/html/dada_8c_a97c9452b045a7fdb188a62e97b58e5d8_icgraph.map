@@ -1,0 +1,7 @@
+<map id="checkR" name="checkR">
+<area shape="rect" id="node3" href="$jeu_8c.html#a725da0480654655d9b7fefa6c8b8ec1d" title="Recupere les informations pour le prochain tour." alt="" coords="141,5,283,35"/>
+<area shape="rect" id="node7" href="$jeu_8c.html#af71947ee506f911a3e0b09dd28198e5e" title="Attente après envoie des informations du retour de ces informations." alt="" coords="133,58,291,105"/>
+<area shape="rect" id="node10" href="$jeu_8c.html#afbccfff41a7a1c5872f6f129a8a9ab44" title="Fait passer les informations au suivant." alt="" coords="121,128,303,157"/>
+<area shape="rect" id="node13" href="$jeu_8c.html#a96da99031da1d74f38b559243dad2171" title="Lecture des informations transmises par les fils." alt="" coords="145,181,279,211"/>
+<area shape="rect" id="node5" href="$dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="352,97,403,127"/>
+</map>

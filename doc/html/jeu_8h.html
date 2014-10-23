@@ -93,7 +93,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <p>Declaration des fonctions relatives au jeu pour le jeu Petits chevaux.  
 <a href="#details">Plus de détails...</a></p>
-
+<div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h__dep__incl.png" border="0" usemap="#src_2headers_2jeu_8hdep" alt=""/></div>
+<map name="src_2headers_2jeu_8hdep" id="src_2headers_2jeu_8hdep">
+<area shape="rect" id="node3" href="dada_8c.html" title="Programme de jeu des petits chevaux utilisant des fork() et des pipes." alt="" coords="5,83,88,112"/><area shape="rect" id="node5" href="jeu_8c.html" title="Fonctions relatives au jeu pour le programme Petits Chevaux." alt="" coords="112,83,184,112"/><area shape="rect" id="node7" href="regles_8c.html" title="Fonctions relatives aux regles pour le jeu Petits chevaux." alt="" coords="208,83,299,112"/></map>
+</div>
+</div>
 <p><a href="jeu_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
@@ -119,8 +126,8 @@ Fonctions</h2></td></tr>
 <tr class="memdesc:a725da0480654655d9b7fefa6c8b8ec1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recupere les informations pour le prochain tour.  <a href="#a725da0480654655d9b7fefa6c8b8ec1d"></a><br/></td></tr>
 <tr class="memitem:a9b781c5cf503cd1379cd5363baf5518b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu_8h.html#a9b781c5cf503cd1379cd5363baf5518b">la_partie_est_interrompue</a> (<a class="el" href="structstruct__debuttour.html">struct_debuttour</a> *debuttourlu)</td></tr>
 <tr class="memdesc:a9b781c5cf503cd1379cd5363baf5518b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifie si la partie n'a pas été interrompue.  <a href="#a9b781c5cf503cd1379cd5363baf5518b"></a><br/></td></tr>
-<tr class="memitem:a2465f6b23f8440c509707690a687ad86"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu_8h.html#a2465f6b23f8440c509707690a687ad86">je_joue</a> (int num_fils, int *position_joueur, <a class="el" href="structstruct__pendantjeu.html">struct_pendantjeu</a> *pendantjeu)</td></tr>
-<tr class="memdesc:a2465f6b23f8440c509707690a687ad86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Action effectuées par le joueur lorsque que vient son tour.  <a href="#a2465f6b23f8440c509707690a687ad86"></a><br/></td></tr>
+<tr class="memitem:a5775c2fd2b9eff5f551a8a923884583f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu_8h.html#a5775c2fd2b9eff5f551a8a923884583f">je_joue</a> (int num_fils, int *position_joueur, <a class="el" href="structstruct__pendantjeu.html">struct_pendantjeu</a> *pendantjeu, int *danslescalier)</td></tr>
+<tr class="memdesc:a5775c2fd2b9eff5f551a8a923884583f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Action effectuées par le joueur lorsque que vient son tour.  <a href="#a5775c2fd2b9eff5f551a8a923884583f"></a><br/></td></tr>
 <tr class="memitem:a0a25bcc79238a489f286585b395ccd17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu_8h.html#a0a25bcc79238a489f286585b395ccd17">je_transmet_mon_resultat_au_voisin</a> (int num_fils, int **pipes, <a class="el" href="structstruct__pendantjeu.html">struct_pendantjeu</a> *pendantjeu)</td></tr>
 <tr class="memdesc:a0a25bcc79238a489f286585b395ccd17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmission des informations du jeu d'un joueurs aux autres joueurs.  <a href="#a0a25bcc79238a489f286585b395ccd17"></a><br/></td></tr>
 <tr class="memitem:af71947ee506f911a3e0b09dd28198e5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jeu_8h.html#af71947ee506f911a3e0b09dd28198e5e">jattend_que_linfo_fasse_le_tour</a> (int num_fils, int **pipes, <a class="el" href="structstruct__pendantjeu.html">struct_pendantjeu</a> *pendantjeulu)</td></tr>
@@ -139,6 +146,8 @@ Fonctions</h2></td></tr>
 <a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><p>Declaration des fonctions relatives au jeu pour le jeu Petits chevaux. </p>
 <dl class="section author"><dt>Auteur</dt><dd>AOUN Abel et DOUCHET Maximilien </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="jeu_8h_source.html">jeu.h</a>.</p>
 </div><h2>Documentation des définitions de type</h2>
 <a class="anchor" id="aa61fba51166ecbbbbe4ee5a1d0edde53"></a>
 <div class="memitem">
@@ -219,6 +228,26 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Void </dd></dl>
 
+<p>Définition à la ligne <a class="el" href="jeu_8c_source.html#l00046">46</a> du fichier <a class="el" href="jeu_8c_source.html">jeu.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_a725da0480654655d9b7fefa6c8b8ec1d_cgraph.png" border="0" usemap="#jeu_8h_a725da0480654655d9b7fefa6c8b8ec1d_cgraph" alt=""/></div>
+<map name="jeu_8h_a725da0480654655d9b7fefa6c8b8ec1d_cgraph" id="jeu_8h_a725da0480654655d9b7fefa6c8b8ec1d_cgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a97c9452b045a7fdb188a62e97b58e5d8" title="Fonction de verification du bon deroulement de read." alt="" coords="195,5,261,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_a725da0480654655d9b7fefa6c8b8ec1d_icgraph.png" border="0" usemap="#jeu_8h_a725da0480654655d9b7fefa6c8b8ec1d_icgraph" alt=""/></div>
+<map name="jeu_8h_a725da0480654655d9b7fefa6c8b8ec1d_icgraph" id="jeu_8h_a725da0480654655d9b7fefa6c8b8ec1d_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="195,5,245,35"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="af71947ee506f911a3e0b09dd28198e5e"></a>
@@ -262,6 +291,26 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Void - Termine en cas d'erreur </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="jeu_8c_source.html#l00107">107</a> du fichier <a class="el" href="jeu_8c_source.html">jeu.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_af71947ee506f911a3e0b09dd28198e5e_cgraph.png" border="0" usemap="#jeu_8h_af71947ee506f911a3e0b09dd28198e5e_cgraph" alt=""/></div>
+<map name="jeu_8h_af71947ee506f911a3e0b09dd28198e5e_cgraph" id="jeu_8h_af71947ee506f911a3e0b09dd28198e5e_cgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a97c9452b045a7fdb188a62e97b58e5d8" title="Fonction de verification du bon deroulement de read." alt="" coords="213,13,280,43"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_af71947ee506f911a3e0b09dd28198e5e_icgraph.png" border="0" usemap="#jeu_8h_af71947ee506f911a3e0b09dd28198e5e_icgraph" alt=""/></div>
+<map name="jeu_8h_af71947ee506f911a3e0b09dd28198e5e_icgraph" id="jeu_8h_af71947ee506f911a3e0b09dd28198e5e_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="213,13,264,43"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -307,9 +356,29 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Void - Termine en cas d'erreur </dd></dl>
 
+<p>Définition à la ligne <a class="el" href="jeu_8c_source.html#l00128">128</a> du fichier <a class="el" href="jeu_8c_source.html">jeu.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_afbccfff41a7a1c5872f6f129a8a9ab44_cgraph.png" border="0" usemap="#jeu_8h_afbccfff41a7a1c5872f6f129a8a9ab44_cgraph" alt=""/></div>
+<map name="jeu_8h_afbccfff41a7a1c5872f6f129a8a9ab44_cgraph" id="jeu_8h_afbccfff41a7a1c5872f6f129a8a9ab44_cgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a97c9452b045a7fdb188a62e97b58e5d8" title="Fonction de verification du bon deroulement de read." alt="" coords="240,5,307,35"/><area shape="rect" id="node5" href="dada_8c.html#a0f46c4e07b6faf548c663e9f8155ef48" title="Fonction de verification du bon deroulement de write." alt="" coords="239,59,308,88"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_afbccfff41a7a1c5872f6f129a8a9ab44_icgraph.png" border="0" usemap="#jeu_8h_afbccfff41a7a1c5872f6f129a8a9ab44_icgraph" alt=""/></div>
+<map name="jeu_8h_afbccfff41a7a1c5872f6f129a8a9ab44_icgraph" id="jeu_8h_afbccfff41a7a1c5872f6f129a8a9ab44_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="237,5,288,35"/></map>
+</div>
+</p>
+
 </div>
 </div>
-<a class="anchor" id="a2465f6b23f8440c509707690a687ad86"></a>
+<a class="anchor" id="a5775c2fd2b9eff5f551a8a923884583f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -329,7 +398,13 @@ Fonctions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structstruct__pendantjeu.html">struct_pendantjeu</a> *&#160;</td>
-          <td class="paramname"><em>pendantjeu</em>&#160;</td>
+          <td class="paramname"><em>pendantjeu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>danslescalier</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -350,6 +425,26 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Int - Retourne le resultat du lancé de dé, la position est déjà modifiée. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="jeu_8c_source.html#l00071">71</a> du fichier <a class="el" href="jeu_8c_source.html">jeu.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_a5775c2fd2b9eff5f551a8a923884583f_cgraph.png" border="0" usemap="#jeu_8h_a5775c2fd2b9eff5f551a8a923884583f_cgraph" alt=""/></div>
+<map name="jeu_8h_a5775c2fd2b9eff5f551a8a923884583f_cgraph" id="jeu_8h_a5775c2fd2b9eff5f551a8a923884583f_cgraph">
+<area shape="rect" id="node3" href="des_8c.html#a2d90f82862986ff270f16f9771580b53" title="Simule un lancé de dé à 6 cotés." alt="" coords="136,5,221,35"/><area shape="rect" id="node5" href="regles_8h.html#a93f9bc44c4d0ed42d65c52127698963c" title="Donne une nouvelle position pour un joueur." alt="" coords="117,83,240,112"/><area shape="rect" id="node8" href="regles_8h.html#a1b36b7c7fb154d4c5402a531802c9224" title="position_escalier" alt="" coords="289,83,407,112"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_a5775c2fd2b9eff5f551a8a923884583f_icgraph.png" border="0" usemap="#jeu_8h_a5775c2fd2b9eff5f551a8a923884583f_icgraph" alt=""/></div>
+<map name="jeu_8h_a5775c2fd2b9eff5f551a8a923884583f_icgraph" id="jeu_8h_a5775c2fd2b9eff5f551a8a923884583f_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="117,5,168,35"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -409,6 +504,26 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Void - Termine en cas d'erreur </dd></dl>
 
+<p>Définition à la ligne <a class="el" href="jeu_8c_source.html#l00157">157</a> du fichier <a class="el" href="jeu_8c_source.html">jeu.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_aedc8c2b1001e2680710ac7ef3d73cac8_cgraph.png" border="0" usemap="#jeu_8h_aedc8c2b1001e2680710ac7ef3d73cac8_cgraph" alt=""/></div>
+<map name="jeu_8h_aedc8c2b1001e2680710ac7ef3d73cac8_cgraph" id="jeu_8h_aedc8c2b1001e2680710ac7ef3d73cac8_cgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0f46c4e07b6faf548c663e9f8155ef48" title="Fonction de verification du bon deroulement de write." alt="" coords="228,13,297,43"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_aedc8c2b1001e2680710ac7ef3d73cac8_icgraph.png" border="0" usemap="#jeu_8h_aedc8c2b1001e2680710ac7ef3d73cac8_icgraph" alt=""/></div>
+<map name="jeu_8h_aedc8c2b1001e2680710ac7ef3d73cac8_icgraph" id="jeu_8h_aedc8c2b1001e2680710ac7ef3d73cac8_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="227,13,277,43"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a0a25bcc79238a489f286585b395ccd17"></a>
@@ -453,6 +568,26 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Void - Termine en cas d'erreur </dd></dl>
 
+<p>Définition à la ligne <a class="el" href="jeu_8c_source.html#l00092">92</a> du fichier <a class="el" href="jeu_8c_source.html">jeu.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_a0a25bcc79238a489f286585b395ccd17_cgraph.png" border="0" usemap="#jeu_8h_a0a25bcc79238a489f286585b395ccd17_cgraph" alt=""/></div>
+<map name="jeu_8h_a0a25bcc79238a489f286585b395ccd17_cgraph" id="jeu_8h_a0a25bcc79238a489f286585b395ccd17_cgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0f46c4e07b6faf548c663e9f8155ef48" title="Fonction de verification du bon deroulement de write." alt="" coords="228,13,297,43"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_a0a25bcc79238a489f286585b395ccd17_icgraph.png" border="0" usemap="#jeu_8h_a0a25bcc79238a489f286585b395ccd17_icgraph" alt=""/></div>
+<map name="jeu_8h_a0a25bcc79238a489f286585b395ccd17_icgraph" id="jeu_8h_a0a25bcc79238a489f286585b395ccd17_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="227,13,277,43"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="ab99f683f90789787a7d8201407214cc1"></a>
@@ -479,6 +614,17 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>result Int - Le numéro du prochain joueur devant s'executer. </dd></dl>
 
+<p>Définition à la ligne <a class="el" href="jeu_8c_source.html#l00207">207</a> du fichier <a class="el" href="jeu_8c_source.html">jeu.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_ab99f683f90789787a7d8201407214cc1_icgraph.png" border="0" usemap="#jeu_8h_ab99f683f90789787a7d8201407214cc1_icgraph" alt=""/></div>
+<map name="jeu_8h_ab99f683f90789787a7d8201407214cc1_icgraph" id="jeu_8h_ab99f683f90789787a7d8201407214cc1_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="160,5,211,35"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a9b781c5cf503cd1379cd5363baf5518b"></a>
@@ -504,6 +650,17 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Int - Renvoie 1 si la partie est termine ou interrompue, 0 sinon. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="jeu_8c_source.html#l00058">58</a> du fichier <a class="el" href="jeu_8c_source.html">jeu.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_a9b781c5cf503cd1379cd5363baf5518b_icgraph.png" border="0" usemap="#jeu_8h_a9b781c5cf503cd1379cd5363baf5518b_icgraph" alt=""/></div>
+<map name="jeu_8h_a9b781c5cf503cd1379cd5363baf5518b_icgraph" id="jeu_8h_a9b781c5cf503cd1379cd5363baf5518b_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="224,5,275,35"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -556,6 +713,26 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Void - Termine en cas d'erreur </dd></dl>
 
+<p>Définition à la ligne <a class="el" href="jeu_8c_source.html#l00176">176</a> du fichier <a class="el" href="jeu_8c_source.html">jeu.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_a2a267585992923972c7c142df69c5b89_cgraph.png" border="0" usemap="#jeu_8h_a2a267585992923972c7c142df69c5b89_cgraph" alt=""/></div>
+<map name="jeu_8h_a2a267585992923972c7c142df69c5b89_cgraph" id="jeu_8h_a2a267585992923972c7c142df69c5b89_cgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0f46c4e07b6faf548c663e9f8155ef48" title="Fonction de verification du bon deroulement de write." alt="" coords="215,13,284,43"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_a2a267585992923972c7c142df69c5b89_icgraph.png" border="0" usemap="#jeu_8h_a2a267585992923972c7c142df69c5b89_icgraph" alt=""/></div>
+<map name="jeu_8h_a2a267585992923972c7c142df69c5b89_icgraph" id="jeu_8h_a2a267585992923972c7c142df69c5b89_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="213,13,264,43"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a96da99031da1d74f38b559243dad2171"></a>
@@ -593,6 +770,26 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Void - Termine en cas d'erreur </dd></dl>
 
+<p>Définition à la ligne <a class="el" href="jeu_8c_source.html#l00194">194</a> du fichier <a class="el" href="jeu_8c_source.html">jeu.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_a96da99031da1d74f38b559243dad2171_cgraph.png" border="0" usemap="#jeu_8h_a96da99031da1d74f38b559243dad2171_cgraph" alt=""/></div>
+<map name="jeu_8h_a96da99031da1d74f38b559243dad2171_cgraph" id="jeu_8h_a96da99031da1d74f38b559243dad2171_cgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a97c9452b045a7fdb188a62e97b58e5d8" title="Fonction de verification du bon deroulement de read." alt="" coords="187,5,253,35"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_a96da99031da1d74f38b559243dad2171_icgraph.png" border="0" usemap="#jeu_8h_a96da99031da1d74f38b559243dad2171_icgraph" alt=""/></div>
+<map name="jeu_8h_a96da99031da1d74f38b559243dad2171_icgraph" id="jeu_8h_a96da99031da1d74f38b559243dad2171_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="187,5,237,35"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="aad47be4fef9e94264139f82a73b259ae"></a>
@@ -613,12 +810,23 @@ Fonctions</h2></td></tr>
 <p>Demande a l'utilisateur de saisir le numero du premier joueur. </p>
 <dl class="section return"><dt>Renvoie</dt><dd>Int - Retourne le numero du joueur saisi. </dd></dl>
 
+<p>Définition à la ligne <a class="el" href="jeu_8c_source.html#l00022">22</a> du fichier <a class="el" href="jeu_8c_source.html">jeu.c</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="jeu_8h_aad47be4fef9e94264139f82a73b259ae_icgraph.png" border="0" usemap="#jeu_8h_aad47be4fef9e94264139f82a73b259ae_icgraph" alt=""/></div>
+<map name="jeu_8h_aad47be4fef9e94264139f82a73b259ae_icgraph" id="jeu_8h_aad47be4fef9e94264139f82a73b259ae_icgraph">
+<area shape="rect" id="node3" href="dada_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Corps du programme Petit Chevaux." alt="" coords="160,5,211,35"/></map>
+</div>
+</p>
+
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi Octobre 23 2014 16:24:26 pour SYS - Petits Chevaux par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Octobre 23 2014 18:05:03 pour SYS - Petits Chevaux par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

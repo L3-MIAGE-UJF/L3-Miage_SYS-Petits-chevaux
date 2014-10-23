@@ -6,7 +6,7 @@ EXEC=dada
 all: $(EXEC)
 
 dada: src/dada.o src/des.o src/regles.o src/jeu.o src/pipes.o
-	$(CC) $(CFLAGS) $(LIBS) src/dada.o src/des.o src/regles.o src/jeu.o src/pipes.o -o bin/dada
+	$(CC) $(CFLAGS) $(LIBS) src/dada.o src/des.o src/regles.o src/jeu.o src/pipes.o -o dada
 	
 dada.o: src/dada.c src/headers/dada.h src/headers/des.h src/headers/regles.h src/headers/jeu.h src/headers/pipes.h
 	$(CC) $(CFLAGS) $(LIBS) -c src/dada.c
@@ -28,7 +28,7 @@ clean:
 	
 mrproper:
 	make clean
-	rm -rf bin/$(EXEC)
+	rm -rf $(EXEC)
 
 doxygen:
 	doxygen doxygen-config

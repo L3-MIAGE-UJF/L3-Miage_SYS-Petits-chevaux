@@ -16,6 +16,14 @@ Programme de jeu des petits chevaux utilisant des fork() et des pipes.
 {\ttfamily \#include \char`\"{}headers/jeu.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}headers/regles.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}headers/pipes.\-h\char`\"{}}\\*
+Graphe des dépendances par inclusion de dada.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dada_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,6 +40,10 @@ Programme de jeu des petits chevaux utilisant des fork() et des pipes. \begin{Do
 A\-O\-U\-N Abel et D\-O\-U\-C\-H\-E\-T Maximilien
 \end{DoxyAuthor}
 Fichier Principal du programme dada 
+
+Définition dans le fichier \hyperlink{dada_8c_source}{dada.\-c}.
+
+
 
 \subsection{Documentation des fonctions}
 \hypertarget{dada_8c_a97c9452b045a7fdb188a62e97b58e5d8}{\index{dada.\-c@{dada.\-c}!check\-R@{check\-R}}
@@ -55,6 +67,22 @@ Verifie que l'operation de lecture dans un pipe s'est bien deroulée.
 \begin{DoxyReturn}{Renvoie}
 Void -\/ Termine le programme en cas d'erreur 
 \end{DoxyReturn}
+
+
+Définition à la ligne 36 du fichier dada.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dada_8c_a97c9452b045a7fdb188a62e97b58e5d8_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{dada_8c_a0f46c4e07b6faf548c663e9f8155ef48}{\index{dada.\-c@{dada.\-c}!check\-W@{check\-W}}
 \index{check\-W@{check\-W}!dada.c@{dada.\-c}}
 \subsubsection[{check\-W}]{\setlength{\rightskip}{0pt plus 5cm}void check\-W (
@@ -74,6 +102,22 @@ Verifie que l'operation d'ecriture dans un pipe s'est bien deroulée.
 \begin{DoxyReturn}{Renvoie}
 Void -\/ Termine le programme en cas d'erreur 
 \end{DoxyReturn}
+
+
+Définition à la ligne 51 du fichier dada.\-c.
+
+
+
+Voici le graphe des appelants de cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dada_8c_a0f46c4e07b6faf548c663e9f8155ef48_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{dada_8c_a0ddf1224851353fc92bfbff6f499fa97}{\index{dada.\-c@{dada.\-c}!main@{main}}
 \index{main@{main}!dada.c@{dada.\-c}}
 \subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
@@ -124,3 +168,18 @@ Fermetures des pipes inutilises
 Corps du programme
 
 Fermetures des pipes restants
+
+Définition à la ligne 67 du fichier dada.\-c.
+
+
+
+Voici le graphe d'appel pour cette fonction \-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{dada_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+
+
